@@ -1,98 +1,106 @@
 #include <iostream>
 #include <vector>
-using namespace std;
- int id;
-//clase person
-class person
-{
-    int id;
-    int age;
-    string name;
-    string lastname;
 
+using namespace std;
+
+class Empresa
+{
 public:
-    person(int id,int age, string name)
+    int id;
+    string nombre;
+    string direccion;
+    string telefono;
+    string nit;
+    string fechaInicioPeriodo;
+    string fechaFinalPeriodo;
+    int dpiEmpleado;
+    string nombreEmpleado;
+    string sueldoEmpleado;
+    string edadEmpleado;
+    string estado;
+    string estadoSueldo;
+    string estadoContracion;
+    void agregarEmpresa();
+    void agregarEmpleado();
+    void buscarEmpresaPorId();
+    Empresa(int id, string nombre, string direccion, string telefono, string nit, string fechaInicioPeriodo, string fechaFinalPeriodo, int dpiEmpleado, string nombreEmpleado, string sueldoEmpleado, string edadEmpleado, string estado, string estadoSueldo, string estadoContracion)
     {
         this->id = id;
-        this->age = age;
-        this->name = name;
+        this->nombre = nombre;
+        this->direccion = direccion;
+        this->telefono = telefono;
+        this->nit = nit;
+        this->fechaInicioPeriodo = fechaInicioPeriodo;
+        this->fechaFinalPeriodo = fechaFinalPeriodo;
+        this->dpiEmpleado = dpiEmpleado;
+        this->nombreEmpleado = nombreEmpleado;
+        this->sueldoEmpleado = sueldoEmpleado;
+        this->edadEmpleado = edadEmpleado;
+        this->estado = estado;
+        this->estadoSueldo = estadoSueldo;
+        this->estadoContracion = estadoContracion;
     }
-    person(){};
-    void show();
-    void insertDataIntoPerson();
-    string deletePerson();
-    void buscarPersona();
 };
-vector<person> personas;
-string person::deletePerson(){
-   
-    cout << "enter the id" << endl;
-    cin >> id;
-    for(person p : personas){
-        if(p.id == id){
-            personas.erase(personas.begin() + id);
-            cout<<"person deleted"<<endl;
-            return "person deleted";
-        }
-    }
-    cout<<"persona not found"<<endl;
-    return "person not found";
-   
-}
 
-
-void person::buscarPersona(){
-    cout<<"enter the id"<<endl;
-    cin>>id;
-    for(person p : personas){
-        if(p.id == id){
-            cout<<"id: "<<p.id<<endl;
-            cout<<"name: "<<p.name<<endl;
-            cout<<"age: "<<p.age<<endl;
-            return;
-        }
-    }
-    cout<<"person not found"<<endl;
-}
-//es como un arrylist en java solo que en c++ se llama vector
-
-void person::show()
+vector<Empresa> listEmpresas;
+void menuReportes()
 {
-    cout << "Name: " << name << endl;
-    cout << "Age: " << age << endl;
+    cout << "+--------- ESCOGE TIPO DE REPORTE -----+" << endl;
+    cout << "| 1. Empleados con sueldo mayor a 3 mil|" << endl;
+    cout << "| 2. Empleados con sueldo minimo       |" << endl;
+    cout << "+--------------------------------------+" << endl;
+    cout << "Ingrese una opcion: ";
+    cout<<"\n";
 }
+void menuPrincipal()
+{
 
-//inserta datos en el vector/arraylist
-void person::insertDataIntoPerson(){
-    person p(1,10, "Juan");
-    personas.insert(personas.begin(), p);
-    person p2(2,20, "Pedro");
-    personas.insert(personas.begin(), p2);
-    person p3(3,30, "Maria");
-    personas.insert(personas.begin(), p3);
-}
-//muestra los datos del vector/arraylist
-void showPerson(){
-   //for each
-    for (person p : personas)
+    int opcion;
+    do
     {
-        p.show();
-    }
-}
+
+        cout << "+-------------------------------------+" << endl;
+        cout << "| 1. Cargar Planilla                  |" << endl;
+        cout << "| 2. Ver reportes                     |" << endl;
+        cout << "| 3. Buscar Empresa por ID            |" << endl;
+        cout << "| 4. Salir                            |" << endl;
+        cout << "+-------------------------------------+" << endl;
+        cout << "Ingrese una opcion: ";
+
+        cin >> opcion;
+        switch (opcion)
+        {
+        case 1:
+            // cargarPlanilla();
+            break;
+        case 2:
+            menuReportes();
+            cin>>opcion;
+            if (opcion == 1)
+            {
+                // generara el report de html con empleados que ganan mas de 3000
+            }
+            else if (opcion == 2)
+            {
+                // generara el report de html con empleados que ganen sueldo minimo
+            }
+            break;
+        case 3:
+
+            break;
+        case 4:
+            exit(0);
+            break;
+        default:
+            cout << "Opcion no valida" << endl;
+            break;
+        }
+
+    } while (opcion != 4);
+};
 
 int main()
 {
-    person p;
-    p.insertDataIntoPerson();
-    showPerson();
-    cout<<"\n";
-    p.deletePerson();
-    showPerson();
-    cout<<"\n";
-    p.deletePerson();
-    showPerson();
-    cout<<"\n";
-    p.buscarPersona();
-
+    menuPrincipal();
     return 0;
 }
