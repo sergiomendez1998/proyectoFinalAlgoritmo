@@ -2,7 +2,7 @@
 #include <vector>
 
 using namespace std;
-int opcion;
+int opcion, idEmpresaTemporal;
 string nombreEmpresaTemporal;
 string numeroPatronalTemporal;
 string codigoPlanillaTemporal;
@@ -10,6 +10,7 @@ string periodoTemporal;
 bool existeEmpresa = false;
 bool existePeriodo = false;
 bool existePlanilla = false;
+
 class Empresa
 {
 public:
@@ -23,8 +24,8 @@ public:
     int idEmpleado;
     int dpiEmpleado;
     string nombreEmpleado;
-    string sueldoEmpleado;
-    string edadEmpleado;
+    int sueldoEmpleado;
+    int edadEmpleado;
     string estado;           // alta-suspendido-baja-normal
     string estadoSueldo;     // con sueldo-sin sueldo
     string estadoContracion; // suspendido por el iggs....etc
@@ -32,7 +33,7 @@ public:
     void agregarEmpresa();
     void agregarEmpleado();
     void buscarEmpresaPorId();
-    Empresa(int id, string codigoPlanilla, string nombre, string direccion, string telefono, string numeroPatronal, string fechaInicioPeriodo, int idEmpleado, int dpiEmpleado, string nombreEmpleado, string sueldoEmpleado, string edadEmpleado, string estado, string estadoSueldo, string estadoContracion)
+    Empresa(int id, string codigoPlanilla, string nombre, string direccion, string telefono, string numeroPatronal, string fechaInicioPeriodo, int idEmpleado, int dpiEmpleado, string nombreEmpleado, int sueldoEmpleado, int edadEmpleado, string estado, string estadoSueldo, string estadoContracion)
     {
         this->id = id;
         this->nombre = nombre;
@@ -50,20 +51,58 @@ public:
         this->estadoContracion = estadoContracion;
     }
 };
-void generarReporteHTML(int opcion)
+
+vector<Empresa> listEmpresasRegistradas;
+vector<Empresa> listEmpresas;
+string escribirEmpresa(int opcion, vector<Empresa> listaEmpresas)
 {
     if (opcion == 1)
     {
-        // generara el report de html con empleados que ganan mas de 3000
+        return "Empresa Registrada";
     }
-    else if (opcion == 2)
+    else
     {
-        // generara el report de html con empleados que ganen sueldo minimo
+        return "Empresa no se inscribio";
     }
 };
+void leerArchivoCsv(){
 
-vector<Empresa> listEmpresas;
-
+};
+void buscarPorNombreEmpresa(string nombreEmpresa)
+{
+    for (Empresa e : listEmpresasRegistradas)
+    {
+        if (e.nombre == nombreEmpresa)
+        {
+            existeEmpresa = true;
+        }
+        else
+        {
+            existeEmpresa = false;
+        }
+    }
+}
+void buscarEmpresaPorNumeroEmpresa(int numeroEmpresa)
+{
+    try
+    {
+        for (Empresa e : listEmpresasRegistradas)
+        {
+            if (e.id == numeroEmpresa)
+            {
+                cout << "Empresa " << e.nombre << endl;
+            }
+            else
+            {
+                cout << "Nombre Empresa no encontrado" << endl;
+            }
+        }
+    }
+    catch (exception e)
+    {
+        cout << "Lista vacia" << endl;
+    }
+};
 void menuCargarArchivos()
 {
     cout << "+-------      BIENVENIDO          -----+" << endl;
@@ -78,10 +117,20 @@ void menuCargarArchivos()
     case 1:
         cout << "Ingrese Nombre Empresa: ";
         cin >> nombreEmpresaTemporal;
+        buscarPorNombreEmpresa(nombreEmpresaTemporal);
         if (existeEmpresa)
         {
             cout << "Ingresa el periodo DD/MM/YYYY - DD/MM/YYYY: ";
             cin >> periodoTemporal;
+        }
+        else
+        {
+            cout << "Aun no existe la empresa en el registro" << endl;
+            cout << "Registre la empresa 1. SI 2. NO :";
+            cin >> opcion;
+            string repuesta = escribirEmpresa(opcion, listEmpresas);
+            cout << repuesta << endl;
+            // metodo
         }
 
         break;
@@ -131,10 +180,12 @@ void menuPrincipal()
         case 2:
             menuReportes();
             cin >> opcion;
-            generarReporteHTML(opcion);
+
             break;
         case 3:
-
+            cout << "Ingrese el numero de empresa: ";
+            cin >> idEmpresaTemporal;
+            buscarEmpresaPorNumeroEmpresa(idEmpresaTemporal);
             break;
         case 4:
             exit(0);
@@ -146,9 +197,13 @@ void menuPrincipal()
 
     } while (opcion != 4);
 };
+void cargarEmpresasExistentes()
+{
+}
 
 int main()
 {
+    cargarEmpresasExistentes();
     menuPrincipal();
     return 0;
 }
