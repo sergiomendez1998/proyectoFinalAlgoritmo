@@ -9,6 +9,7 @@ namespace Menu
     string codigoPlanillaTemporal;
     string periodoTemporal;
 
+    //Se carga el archivo
     void menuCargarArchivos()
     {
         cout << "+-------      BIENVENIDO          -----+" << endl;
