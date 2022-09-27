@@ -50,7 +50,9 @@ namespace FuncionesPrincipales
         archivo.close();
     };
 
-        void buscarPorNombreEmpresa(string nombreEmpresa)
+    // crear metodo para cargar empresas desde el archivo al arreglo de listaEmpresas
+
+    void buscarPorNombreEmpresa(string nombreEmpresa)
     {
         for (FuncionEmpresa::Empresa e : FuncionEmpresa::listEmpresasRegistradas)
         {

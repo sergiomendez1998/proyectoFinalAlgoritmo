@@ -12,7 +12,7 @@ namespace FuncionEmpresa
     string direccion;
     string telefono;
     string numeroPatronal;
-    string fechaInicioPeriodo;
+    string fechaPeriodo;
     int idEmpleado;
     int dpiEmpleado;
     string nombreEmpleado;
@@ -21,14 +21,14 @@ namespace FuncionEmpresa
     string estado;           // alta-suspendido-baja-normal
     string estadoSueldo;     // con sueldo-sin sueldo
     string estadoContracion; // suspendido por el iggs....etc
-    Empresa(int id, string codigoPlanilla, string nombre, string direccion, string telefono, string numeroPatronal, string fechaInicioPeriodo, int idEmpleado, int dpiEmpleado, string nombreEmpleado, int sueldoEmpleado, int edadEmpleado, string estado, string estadoSueldo, string estadoContracion)
+    Empresa(int id, string codigoPlanilla, string nombre, string direccion, string telefono, string numeroPatronal, string fechaPeriodo, int idEmpleado, int dpiEmpleado, string nombreEmpleado, int sueldoEmpleado, int edadEmpleado, string estado, string estadoSueldo, string estadoContracion)
     {
       this->id = id;
       this->nombre = nombre;
       this->direccion = direccion;
       this->telefono = telefono;
       this->numeroPatronal = numeroPatronal;
-      this->fechaInicioPeriodo = fechaInicioPeriodo;
+      this->fechaPeriodo = fechaPeriodo;
       this->idEmpleado = idEmpleado;
       this->dpiEmpleado = dpiEmpleado;
       this->nombreEmpleado = nombreEmpleado;
