@@ -1,0 +1,4 @@
+ID,Nombre,Direccion,Telefono,Numero Patronal,Fecha periodo,IDEmpleado,DPIEmpleado,Nombre Empleado,Sueldo empleado,Edad Empleado,Estado,Estado Sueldo,Estado Contratacion
+2759636,Ariel Perez,Zona 1 Guatemala,27802912,19467017,01/02/2003,31103133,5.36375E+12,Ariel Perez,5100.00,35,Normal,Con sueldo,Activo
+27412163,Juan Garcia,Rabinal Baja Verapaz,42778443,52792674,04/05/2006,84924607,2.73198E+12,Juan Garcia,8500.00,26,Alta,Con sueldo,Activo
+49281171,Maria Archila,Camotan Chiquimula,9631604,35440060,07/08/2009,40461946,9.54335E+12,Maria Archila,6300.00,29,Baja,Sin sueldo,Suspendido por el IGSS
