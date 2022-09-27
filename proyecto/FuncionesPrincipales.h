@@ -10,7 +10,7 @@ namespace FuncionesPrincipales
     bool existeEmpresa = false;
     bool existePeriodo = false;
     bool existePlanilla = false;
-    string registrarDatosEmpresaPlanillaCSV(Fuvector<FuncionEmpresa::Empresa> listaEmpresaTemporal)
+    string registrarDatosEmpresaPlanillaCSV(vector<FuncionEmpresa::Empresa> listaEmpresaTemporal)
     {
         ofstream archivoEmpresas;
         archivoEmpresas.open("registroEmpresaPlanilla.csv");
@@ -20,7 +20,7 @@ namespace FuncionesPrincipales
             archivoEmpresas << listaEmpresaTemporal[i].id << "," << listaEmpresaTemporal[i].nombre << "," << listaEmpresaTemporal[i].direccion << "," << listaEmpresaTemporal[i].telefono << "," << listaEmpresaTemporal[i].numeroPatronal << "," << listaEmpresaTemporal[i].fechaPeriodo << "," << listaEmpresaTemporal[i].codigoPlanilla << "," << listaEmpresaTemporal[i].estado << "," << listaEmpresaTemporal[i].estadoSueldo << "," << listaEmpresaTemporal[i].estadoContracion << endl;
         }
         archivoEmpresas.close();
-        return "Datos Registrados!"
+        return "Datos Registrados!";
     }
     string escribirEmpresa(int opcion, vector<FuncionEmpresa::Empresa> listadoEmpresas)
     {
@@ -70,62 +70,8 @@ namespace FuncionesPrincipales
         }
         archivo.close();
     };
-    //-crear un archivo csv con nombre registrosEmpresaPlanilla.csv
-    //-crear un metodo en FuncionesPrincipales que carga los datos al arreglo listEmpresas
+
     // crear metodo para cargar empresas desde el archivo al arreglo de listaEmpresas
-
-    void registroEmpresaPlanilla()
-    {
-        ifstream archivo;
-        archivo.open("registrosEmpresaPlanilla.csv");
-        string linea = "";
-        getline(archivo, linea);
-        linea = "";
-        while (getline(archivo, linea))
-        {
-            int id;
-            string nombre;
-            string direccion;
-            string telefono;
-            string numeroPatronal;
-            string fechaPeriodo;
-            int idEmpleado;
-            int dpiEmpleado;
-            string nombreEmpleado;
-            int sueldoEmpleado;
-            int edadEmpleado;
-            string estado;
-            string estadoSueldo;
-            string estadoContratacion;
-            string temporal;
-
-            stringstream archivo(linea);
-
-            getline(archivo, temporal, ',');
-            id = stoi(temporal);
-            getline(archivo, nombre, ',');
-            getline(archivo, direccion, ',');
-            getline(archivo, telefono, ',');
-            getline(archivo, numeroPatronal, ',');
-            getline(archivo,fechaPeriodo,',');
-            getline(archivo,temporal,',');
-            idEmpleado = stoi(temporal);
-            getline(archivo, temporal, ',');
-            dpiEmpleado = stoi(temporal);
-            getline(archivo, nombreEmpleado,',');
-            getline(archivo,temporal,',');
-            sueldoEmpleado = stoi(temporal);
-            getline(archivo, temporal,',');
-            edadEmpleado = stoi(temporal);
-            getline(archivo, estado,',');
-            getline(archivo, estadoContratacion, ',');
-
-            FuncionEmpresa::Empresa empresa(id,nombre, direccion, telefono, numeroPatronal, fechaPeriodo, idEmpleado, dpiEmpleado, nombreEmpleado,sueldoEmpleado, edadEmpleado,estado,estadoSueldo,estadoContratacion);
-            FuncionEmpresa::listEmpresasRegistradas.push_back(empresa);
-        }
-        archivo.close();
-    };
-
 
     void buscarPorNombreEmpresa(string nombreEmpresa)
     {
@@ -195,6 +141,10 @@ namespace FuncionesPrincipales
             cout << "Numero Patronal: " << e.numeroPatronal << endl;
         }
     }
+
+    //    string existePeriodoRegistrado(Fuvector<FuncionEmpresa::Empresa> listaEmpresaTemporal){
+
+    //    }
 
     void cargarEmpresasExistentes()
     {
