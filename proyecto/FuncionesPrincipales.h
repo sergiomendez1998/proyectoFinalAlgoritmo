@@ -72,6 +72,60 @@ namespace FuncionesPrincipales
     };
 
     // crear metodo para cargar empresas desde el archivo al arreglo de listaEmpresas
+    void registroEmpresaPlanilla()
+    {
+        ifstream archivo;
+        archivo.open("registrosEmpresaPlanilla.csv");
+        string linea = "";
+        getline(archivo, linea);
+        linea = "";
+        while (getline(archivo, linea))
+        {
+            int id;
+            string codigoPlanilla;
+            string nombre;
+            string direccion;
+            string telefono;
+            string numeroPatronal;
+            string fechaPeriodo;
+            int idEmpleado;
+            int dpiEmpleado;
+            string nombreEmpleado;
+            int sueldoEmpleado;
+            int edadEmpleado;
+            string estado;
+            string estadoSueldo;
+            string estadoContratacion;
+            string temporal;
+
+            stringstream archivo(linea);
+
+            getline(archivo, temporal, ',');
+            id = stoi(temporal);
+            getline(archivo, codigoPlanilla, ',');
+            getline(archivo, nombre, ',');
+            getline(archivo, direccion, ',');
+            getline(archivo, telefono, ',');
+            getline(archivo, numeroPatronal, ',');
+            getline(archivo, fechaPeriodo, ',');
+            getline(archivo, temporal, ',');
+            idEmpleado = stoi(temporal);
+            getline(archivo, temporal, ',');
+            dpiEmpleado = stoi(temporal);
+            getline(archivo, nombreEmpleado, ',');
+            getline(archivo, temporal, ',');
+            sueldoEmpleado = stoi(temporal);
+            getline(archivo, temporal, ',');
+            edadEmpleado = stoi(temporal);
+            getline(archivo, estado, ',');
+            getline(archivo, estadoSueldo, ',');
+            getline(archivo, estadoContratacion, ',');
+
+            FuncionEmpresa::Empresa empresa(id, codigoPlanilla, nombre, direccion, telefono, numeroPatronal, fechaPeriodo, idEmpleado, dpiEmpleado, nombreEmpleado, sueldoEmpleado, edadEmpleado, estado, estadoSueldo, estadoContratacion);
+            FuncionEmpresa::listEmpresasRegistradas.push_back(empresa);
+        }
+        archivo.close();
+    };
 
     void buscarPorNombreEmpresa(string nombreEmpresa)
     {
