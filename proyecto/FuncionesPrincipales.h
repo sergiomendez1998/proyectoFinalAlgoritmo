@@ -10,11 +10,32 @@ namespace FuncionesPrincipales
     bool existeEmpresa = false;
     bool existePeriodo = false;
     bool existePlanilla = false;
+    string registrarDatosEmpresaPlanillaCSV(Fuvector<FuncionEmpresa::Empresa> listaEmpresaTemporal)
+    {
+        ofstream archivoEmpresas;
+        archivoEmpresas.open("registroEmpresaPlanilla.csv");
+
+        for (int i = 0; i < listaEmpresaTemporal.size(); i++)
+        {
+            archivoEmpresas << listaEmpresaTemporal[i].id << "," << listaEmpresaTemporal[i].nombre << "," << listaEmpresaTemporal[i].direccion << "," << listaEmpresaTemporal[i].telefono << "," << listaEmpresaTemporal[i].numeroPatronal << "," << listaEmpresaTemporal[i].fechaPeriodo << "," << listaEmpresaTemporal[i].codigoPlanilla << "," << listaEmpresaTemporal[i].estado << "," << listaEmpresaTemporal[i].estadoSueldo << "," << listaEmpresaTemporal[i].estadoContracion << endl;
+        }
+        archivoEmpresas.close();
+        return "Datos Registrados!"
+    }
     string escribirEmpresa(int opcion, vector<FuncionEmpresa::Empresa> listadoEmpresas)
     {
         if (opcion == 1)
         {
-            return "Empresa Registrada";
+            ofstream archivoEmpresas;
+            archivoEmpresas.open("empresasRegistradas.csv");
+            for (int i = 0; i < listadoEmpresas.size(); i++)
+            {
+                archivoEmpresas << listadoEmpresas[0].id << "," << listadoEmpresas[0].nombre << "," << listadoEmpresas[0].direccion << "," << listadoEmpresas[0].telefono << "," << listadoEmpresas[0].numeroPatronal << endl;
+            }
+            archivoEmpresas.close();
+            string mensaje = registrarDatosEmpresaPlanillaCSV(listadoEmpresas);
+
+            return "Empresa Registrada, " + mensaje;
         }
         else
         {
@@ -79,6 +100,28 @@ namespace FuncionesPrincipales
                 else
                 {
                     cout << "Nombre Empresa no encontrado" << endl;
+                }
+            }
+        }
+        catch (exception e)
+        {
+            cout << "Lista vacia" << endl;
+        }
+    };
+
+    void buscarEmpresaPorId(int idEmpresa)
+    {
+        try
+        {
+            for (FuncionEmpresa::Empresa e : FuncionEmpresa::listEmpresasRegistradas)
+            {
+                if (e.id == idEmpresa)
+                {
+                    existeEmpresa = true;
+                }
+                else
+                {
+                    existeEmpresa = false;
                 }
             }
         }
