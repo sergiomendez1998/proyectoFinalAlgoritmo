@@ -52,7 +52,7 @@ namespace FuncionesPrincipales
         linea = "";
         while (getline(archivo, linea))
         {
-            int id;
+            string id;
             string nombre;
             string direccion;
             string telefono;
@@ -60,8 +60,7 @@ namespace FuncionesPrincipales
             string tempString;
 
             stringstream archivo(linea);
-            getline(archivo, tempString, ',');
-            id = stoi(tempString);
+            getline(archivo, id, ',');
             getline(archivo, nombre, ',');
             getline(archivo, direccion, ',');
             getline(archivo, telefono, ',');
@@ -83,7 +82,7 @@ namespace FuncionesPrincipales
         linea = "";
         while (getline(archivo, linea))
         {
-            int id;
+            string id;
             string codigoPlanilla;
             string nombre;
             string direccion;
@@ -102,8 +101,7 @@ namespace FuncionesPrincipales
 
             stringstream archivo(linea);
 
-            getline(archivo, temporal, ',');
-            id = stoi(temporal);
+            getline(archivo, id, ',');
             getline(archivo, codigoPlanilla, ',');
             getline(archivo, nombre, ',');
             getline(archivo, direccion, ',');
