@@ -3,7 +3,8 @@
 using namespace std;
 namespace Menu
 {
-    int opcion, idEmpresaTemporal;
+    int opcion;
+    string idEmpresaTemporal;
     string nombreEmpresaTemporal;
     string numeroPatronalTemporal;
     string codigoPlanillaTemporal;
