@@ -11,6 +11,16 @@ namespace FuncionesPrincipales
     bool existePeriodo = false;
     bool existePlanilla = false;
     bool seRepiteEmpleado = false;
+    bool suspendido = false;
+
+    void revisarEmpleadoSuspendido(vector<FuncionEmpresa::Empresa>listaTemporal){
+        for(FuncionEmpresa::Empresa e : listaTemporal){
+            if(e.estado=="Suspendido"){
+                suspendido=true;
+                break;
+            }
+        }
+    }
 
     void buscarEmpleadoRepetido(vector<FuncionEmpresa::Empresa> listaTemporal){
         for (FuncionEmpresa::Empresa e : listaTemporal){
@@ -21,8 +31,7 @@ namespace FuncionesPrincipales
                 }
             }
         }
-        
-        }
+    }
 
     string registrarDatosEmpresaPlanillaCSV(vector<FuncionEmpresa::Empresa> listaEmpresaTemporal)
     {
