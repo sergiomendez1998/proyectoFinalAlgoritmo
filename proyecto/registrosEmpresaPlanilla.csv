@@ -1,4 +1,5 @@
-ID,Nombre,Direccion,Telefono,Numero Patronal,Fecha periodo,IDEmpleado,DPIEmpleado,Nombre Empleado,Sueldo empleado,Edad Empleado,Estado,Estado Sueldo,Estado Contratacion
-2759636,Ariel Perez,Zona 1 Guatemala,27802912,19467017,01/02/2003,31103133,5.36375E+12,Ariel Perez,5100.00,35,Normal,Con sueldo,Activo
-27412163,Juan Garcia,Rabinal Baja Verapaz,42778443,52792674,04/05/2006,84924607,2.73198E+12,Juan Garcia,8500.00,26,Alta,Con sueldo,Activo
-49281171,Maria Archila,Camotan Chiquimula,9631604,35440060,07/08/2009,40461946,9.54335E+12,Maria Archila,6300.00,29,Baja,Sin sueldo,Suspendido por el IGSS
+id,codigoPlanilla,nombre,direccion,telefono,numeroPatronal,fechaPeriodo,idEmpleado,dpiEmpleado,nombreEmpleado,sueldoEmpleado,edadEmpleado,estado,estadoSueldo,estadoContratacion,estadoContratacion,estadoContratacion,estadoContratacion
+5454,5485451,Jose Manuel,zona 6,54854625,6254584,21/06/2003,645415,5649851354265,Jose Manuel,5200,35,alta,con sueldo,normal
+5626,1454151,Carlos Alfredo, zona 10, 58946532,5645512,15/08/2006,45815,9854653432546,Carlos Alfredo,6900,29,baja,sin sueldo,normal
+
+
