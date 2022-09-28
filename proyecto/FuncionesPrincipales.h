@@ -11,22 +11,37 @@ namespace FuncionesPrincipales
     bool existePeriodo = false;
     bool existePlanilla = false;
     bool seRepiteEmpleado = false;
-    bool suspendido = false;
+    bool sinSueldo = false;
 
-    void revisarEmpleadoSuspendido(vector<FuncionEmpresa::Empresa>listaTemporal){
-        for(FuncionEmpresa::Empresa e : listaTemporal){
-            if(e.estado=="Suspendido"){
-                suspendido=true;
-                break;
+    void revisarEmpleadoSuspendido(vector<FuncionEmpresa::Empresa> listaTemporal)
+    {
+        for (FuncionEmpresa::Empresa e : listaTemporal)
+        {
+            if (e.estado == "Suspendido")
+            {
+                if (e.sueldoEmpleado == 0 && e.estadoSueldo == "Sin sueldo")
+                {
+                    sinSueldo = true;
+                    break;
+                }
+                else
+                {
+                    sinSueldo = false;
+                    break;
+                }
             }
         }
     }
 
-    void buscarEmpleadoRepetido(vector<FuncionEmpresa::Empresa> listaTemporal){
-        for (FuncionEmpresa::Empresa e : listaTemporal){
-            for (FuncionEmpresa::Empresa e1 : listaTemporal){
-                if(e.dpiEmpleado==e1.dpiEmpleado){
-                    seRepiteEmpleado=true;
+    void buscarEmpleadoRepetido(vector<FuncionEmpresa::Empresa> listaTemporal)
+    {
+        for (FuncionEmpresa::Empresa e : listaTemporal)
+        {
+            for (FuncionEmpresa::Empresa e1 : listaTemporal)
+            {
+                if (e.dpiEmpleado == e1.dpiEmpleado)
+                {
+                    seRepiteEmpleado = true;
                     break;
                 }
             }
