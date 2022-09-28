@@ -6,7 +6,7 @@ namespace FuncionEmpresa
   class Empresa
   {
   public:
-    int id;
+    string id;
     string codigoPlanilla;
     string nombre;
     string direccion;
@@ -21,7 +21,7 @@ namespace FuncionEmpresa
     string estado;           // alta-suspendido-baja-normal
     string estadoSueldo;     // con sueldo-sin sueldo
     string estadoContracion; // suspendido por el iggs....etc
-    Empresa(int id, string codigoPlanilla, string nombre, string direccion, string telefono, string numeroPatronal, string fechaPeriodo, int idEmpleado, int dpiEmpleado, string nombreEmpleado, int sueldoEmpleado, int edadEmpleado, string estado, string estadoSueldo, string estadoContracion)
+    Empresa(string id, string codigoPlanilla, string nombre, string direccion, string telefono, string numeroPatronal, string fechaPeriodo, int idEmpleado, int dpiEmpleado, string nombreEmpleado, int sueldoEmpleado, int edadEmpleado, string estado, string estadoSueldo, string estadoContracion)
     {
       this->id = id;
       this->nombre = nombre;
@@ -38,7 +38,7 @@ namespace FuncionEmpresa
       this->estadoSueldo = estadoSueldo;
       this->estadoContracion = estadoContracion;
     }
-    Empresa(int id, string nombre, string dirreccion, string telefono, string numeroPatronal)
+    Empresa(string id, string nombre, string dirreccion, string telefono, string numeroPatronal)
     {
       this->id = id;
       this->nombre = nombre;
