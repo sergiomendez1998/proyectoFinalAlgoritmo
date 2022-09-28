@@ -9,7 +9,6 @@ namespace Menu
     string codigoPlanillaTemporal;
     string periodoTemporal;
 
-    // Se carga el archivo
     void menuCargarArchivos()
     {
         cout << "+-------      BIENVENIDO          -----+" << endl;
@@ -35,15 +34,21 @@ namespace Menu
                 cout << "Aun no existe la empresa en el registro" << endl;
                 cout << "Registre la empresa 1. SI 2. NO :";
                 cin >> opcion;
-                string repuesta = FuncionesPrincipales::escribirEmpresa(opcion, FuncionEmpresa::listEmpresas);
-                cout << repuesta << endl; // si fue si entonces retorna la empresa inscrita y carga los archivos
-                // metodo
+                string repuesta = FuncionesPrincipales::escribirEmpresa(opcion, FuncionEmpresa::listEmpresasPlanillaTemporal);
+                cout << repuesta << endl;
             }
 
             break;
         case 2:
             cout << "Ingrese id de la empresa";
-            cin >> nombreEmpresaTemporal;
+            cin >> idEmpresaTemporal;
+            FuncionesPrincipales::buscarEmpresaPorId(idEmpresaTemporal);
+            if (FuncionesPrincipales::existeEmpresa)
+            {
+                cout << "Ingrese el numero patronal: ";
+                cin >> numeroPatronalTemporal;
+            }
+
             break;
         case 3:
             cout << "Ingrese Nombre Empresa";
