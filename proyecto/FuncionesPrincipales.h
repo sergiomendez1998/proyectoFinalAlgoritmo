@@ -22,7 +22,6 @@ namespace FuncionesPrincipales
                 if (e.sueldoEmpleado == 0 && e.estadoSueldo == "Sin sueldo")
                 {
                     sinSueldo = true;
-                    break;
                 }
                 else
                 {
