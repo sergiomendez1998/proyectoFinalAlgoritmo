@@ -122,7 +122,7 @@ namespace FuncionesPrincipales
             getline(archivo, estadoContratacion, ',');
 
             FuncionEmpresa::Empresa empresa(id, codigoPlanilla, nombre, direccion, telefono, numeroPatronal, fechaPeriodo, idEmpleado, dpiEmpleado, nombreEmpleado, sueldoEmpleado, edadEmpleado, estado, estadoSueldo, estadoContratacion);
-            FuncionEmpresa::listEmpresasRegistradas.push_back(empresa);
+            FuncionEmpresa::listEmpresasPlanillaRegistradas.push_back(empresa);
         }
         archivo.close();
     };

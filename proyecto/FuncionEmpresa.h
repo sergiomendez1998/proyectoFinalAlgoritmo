@@ -50,5 +50,6 @@ namespace FuncionEmpresa
 
   vector<Empresa> listEmpresasRegistradas;
   vector<Empresa> listEmpresas;
+  vector<Empresa> listEmpresasPlanillaTemporal;
 
 }
