@@ -10,6 +10,7 @@ namespace FuncionesPrincipales
     bool existeEmpresa = false;
     bool existePeriodo = false;
     bool existePlanilla = false;
+    bool seRepiteEmpleado = false;
     string registrarDatosEmpresaPlanillaCSV(vector<FuncionEmpresa::Empresa> listaEmpresaTemporal)
     {
         ofstream archivoEmpresas;
@@ -55,7 +56,7 @@ namespace FuncionesPrincipales
             string nombre;
             string direccion;
             string telefono;
-            string numeroPatronal;
+            int numeroPatronal;
             string tempString;
 
             stringstream archivo(linea);
@@ -64,7 +65,8 @@ namespace FuncionesPrincipales
             getline(archivo, nombre, ',');
             getline(archivo, direccion, ',');
             getline(archivo, telefono, ',');
-            getline(archivo, numeroPatronal, ',');
+            getline(archivo, tempString, ',');
+            numeroPatronal = stoi(tempString);
             FuncionEmpresa::Empresa empresa(id, nombre, direccion, telefono, numeroPatronal);
             FuncionEmpresa::listEmpresasRegistradas.push_back(empresa);
         }
@@ -86,7 +88,7 @@ namespace FuncionesPrincipales
             string nombre;
             string direccion;
             string telefono;
-            string numeroPatronal;
+            int numeroPatronal;
             string fechaPeriodo;
             int idEmpleado;
             int dpiEmpleado;
@@ -106,7 +108,8 @@ namespace FuncionesPrincipales
             getline(archivo, nombre, ',');
             getline(archivo, direccion, ',');
             getline(archivo, telefono, ',');
-            getline(archivo, numeroPatronal, ',');
+            getline(archivo, temporal, ',');
+            numeroPatronal = stoi(temporal);
             getline(archivo, fechaPeriodo, ',');
             getline(archivo, temporal, ',');
             idEmpleado = stoi(temporal);
