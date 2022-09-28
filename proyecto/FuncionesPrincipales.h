@@ -11,6 +11,19 @@ namespace FuncionesPrincipales
     bool existePeriodo = false;
     bool existePlanilla = false;
     bool seRepiteEmpleado = false;
+
+    void buscarEmpleadoRepetido(vector<FuncionEmpresa::Empresa> listaTemporal){
+        for (FuncionEmpresa::Empresa e : listaTemporal){
+            for (FuncionEmpresa::Empresa e1 : listaTemporal){
+                if(e.dpiEmpleado==e1.dpiEmpleado){
+                    seRepiteEmpleado=true;
+                    break;
+                }
+            }
+        }
+        
+        }
+
     string registrarDatosEmpresaPlanillaCSV(vector<FuncionEmpresa::Empresa> listaEmpresaTemporal)
     {
         ofstream archivoEmpresas;
