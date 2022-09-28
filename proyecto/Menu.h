@@ -6,9 +6,18 @@ namespace Menu
     int opcion;
     string idEmpresaTemporal;
     string nombreEmpresaTemporal;
-    string numeroPatronalTemporal;
+    int numeroPatronalTemporal;
     string codigoPlanillaTemporal;
     string periodoTemporal;
+
+    void limpiarDatosTemporales()
+    {
+        idEmpresaTemporal = "";
+        nombreEmpresaTemporal = "";
+        numeroPatronalTemporal = 0;
+        codigoPlanillaTemporal = "";
+        periodoTemporal = "";
+    }
 
     void menuCargarArchivos()
     {
@@ -29,6 +38,18 @@ namespace Menu
             {
                 cout << "Ingresa el periodo DD/MM/YYYY - DD/MM/YYYY: ";
                 cin >> periodoTemporal;
+                FuncionesPrincipales::existePeriodoRegistrado(periodoTemporal, idEmpresaTemporal);
+                if (FuncionesPrincipales::existePeriodo)
+                {
+                    cout << "Ya existe un periodo registrado con ese misma empresa" << endl;
+                    limpiarDatosTemporales();
+                }
+                else
+                {
+                    string mensaje = FuncionesPrincipales::registrarDatosEmpresaPlanillaCSV(FuncionEmpresa::listEmpresasPlanillaTemporal);
+                    cout << mensaje << endl;
+                    limpiarDatosTemporales();
+                }
             }
             else
             {
@@ -37,23 +58,52 @@ namespace Menu
                 cin >> opcion;
                 string repuesta = FuncionesPrincipales::escribirEmpresa(opcion, FuncionEmpresa::listEmpresasPlanillaTemporal);
                 cout << repuesta << endl;
+                limpiarDatosTemporales();
             }
 
             break;
         case 2:
-            cout << "Ingrese id de la empresa";
+            cout << "Ingrese numero patronal de la empresa";
             cin >> idEmpresaTemporal;
-            FuncionesPrincipales::buscarEmpresaPorId(idEmpresaTemporal);
+            FuncionesPrincipales::buscarEmpresaPorNumeroPatronal(numeroPatronalTemporal);
             if (FuncionesPrincipales::existeEmpresa)
             {
-                cout << "Ingrese el numero patronal: ";
-                cin >> numeroPatronalTemporal;
+
+                string mensaje = FuncionesPrincipales::registrarDatosEmpresaPlanillaCSV(FuncionEmpresa::listEmpresasPlanillaTemporal);
+                cout << mensaje << endl;
+                limpiarDatosTemporales();
+            }
+            else
+            {
+                cout << "Aun no existe la empresa en el registro" << endl;
+                cout << "Registre la empresa 1. SI 2. NO :";
+                cin >> opcion;
+                string repuesta = FuncionesPrincipales::escribirEmpresa(opcion, FuncionEmpresa::listEmpresasPlanillaTemporal);
+                cout << repuesta << endl;
+                limpiarDatosTemporales();
             }
 
             break;
         case 3:
-            cout << "Ingrese Nombre Empresa";
-            cin >> nombreEmpresaTemporal;
+            cout << "Ingrese codigo planilla";
+            cin >> codigoPlanillaTemporal;
+            FuncionesPrincipales::buscarEmpresaPorCodigoPlanilla(codigoPlanillaTemporal);
+            if (FuncionesPrincipales::existeEmpresa)
+            {
+
+                string mensaje = FuncionesPrincipales::registrarDatosEmpresaPlanillaCSV(FuncionEmpresa::listEmpresasPlanillaTemporal);
+                cout << mensaje << endl;
+                limpiarDatosTemporales();
+            }
+            else
+            {
+                cout << "Aun no existe la empresa en el registro" << endl;
+                cout << "Registre la empresa 1. SI 2. NO :";
+                cin >> opcion;
+                string repuesta = FuncionesPrincipales::escribirEmpresa(opcion, FuncionEmpresa::listEmpresasPlanillaTemporal);
+                cout << repuesta << endl;
+                limpiarDatosTemporales();
+            }
             break;
         default:
             cout << "Opcion no valida";

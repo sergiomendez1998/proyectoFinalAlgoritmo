@@ -197,9 +197,49 @@ namespace FuncionesPrincipales
         }
     }
 
-    //    string existePeriodoRegistrado(Fuvector<FuncionEmpresa::Empresa> listaEmpresaTemporal){
+    void existePeriodoRegistrado(string periodo, string idEmpresa)
+    {
 
-    //    }
+        for (FuncionEmpresa::Empresa e : FuncionEmpresa::listEmpresasPlanillaRegistradas)
+        {
+            if (e.fechaPeriodo == periodo && e.id == idEmpresa)
+            {
+                existePeriodo = true;
+            }
+            else
+            {
+                existePeriodo = false;
+            }
+        }
+    }
+    void buscarEmpresaPorNumeroPatronal(int numeroPatronal)
+    {
+        for (FuncionEmpresa::Empresa e : FuncionEmpresa::listEmpresasRegistradas)
+        {
+            if (e.numeroPatronal == numeroPatronal)
+            {
+                existeEmpresa = true;
+            }
+            else
+            {
+                existeEmpresa = false;
+            }
+        }
+    }
+    void buscarEmpresaPorCodigoPlanilla(string codigoPlanilla)
+    {
+        for (FuncionEmpresa::Empresa e : FuncionEmpresa::listEmpresasPlanillaRegistradas)
+        {
+            if (e.codigoPlanilla == codigoPlanilla)
+            {
+                existeEmpresa = true;
+            }
+            else
+            {
+                existeEmpresa = false;
+            }
+        }
+    }
 
     void cargarEmpresasExistentes()
     {
