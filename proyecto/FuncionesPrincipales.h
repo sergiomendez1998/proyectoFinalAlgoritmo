@@ -142,7 +142,7 @@ namespace FuncionesPrincipales
             }
         }
     }
-    void buscarEmpresaPorNumeroEmpresa(int numeroEmpresa)
+    void buscarEmpresaPorNumeroEmpresa(string numeroEmpresa)
     {
         try
         {
@@ -164,7 +164,7 @@ namespace FuncionesPrincipales
         }
     };
 
-    void buscarEmpresaPorId(int idEmpresa)
+    void buscarEmpresaPorId(string idEmpresa)
     {
         try
         {
