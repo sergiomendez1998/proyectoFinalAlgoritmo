@@ -350,6 +350,35 @@ namespace FuncionesPrincipales
 
     void crearHTMLSueldoMinimo()
     {
+        crearHTMLSueldoMinimo();
+        ofstream archivo;
+        archivo.open("sueldoMinimo.html");
+        archivo << "<!DOCTYPE html>"<<endl;
+        archivo << "<html>" <<endl;
+        archivo << "<head>"<<endl;
+        archivo << "<title>Reporte de sueldos minimos</title>"<<endl;
+        archivo << "</head>"<< endl;
+        archivo << "<body>"<<endl;
+        archivo << "<h1>Reporte de sueldo Minimo</h1>" << endl;
+        archivo << "<table border='1'>"<<endl;
+        archivo << "<tr>" <<endl;
+        archivo << "<th>nombre</th>"<<endl;
+        archivo << "<th>DPI</th>"<<endl;
+        archivo << "<th>Sueldo</th>"<<endl;
+        archivo << "<th>Nombre Empresa</th>"<<endl;
+        archivo << "</tr>"<<endl;
+        for(FuncionEmpresa::Empresa e : listaSueldoMinimoEmpleados){
+            archivo <<"<tr>"<<endl;
+            archivo << "<td> "<< e.nombreEmpleado << "</td>"<<endl;
+            archivo << "<td>" << e.dpiEmpleado << "</td>" << endl;
+            archivo << "<td>" << e.sueldoEmpleado << "</td>"<< endl;
+            archivo << "<td>"<< e.nombre << "/td"<<endl;
+            archivo << "</tr>" <<endl;
+        }
+        archivo << "</table>" << endl;
+        archivo << "</body>" << endl;
+        archivo << "</html>" << endl;
+        archivo.close();
     }
     void crearHTMLSueldoMayor3000()
     {
