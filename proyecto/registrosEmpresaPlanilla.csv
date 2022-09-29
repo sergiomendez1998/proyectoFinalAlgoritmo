@@ -1,3 +1,4 @@
-id,codigoPlanilla,nombre,direccion,telefono,numeroPatronal,fechaPeriodo,idEmpleado,dpiEmpleado,nombreEmpleado,sueldoEmpleado,edadEmpleado,estado,estadoSueldo,estadoContratacion,estadoContratacion,estadoContratacion,estadoContratacion
-5454,5485451,Jose Manuel,zona 6,54854625,6254584,21/06/2003,645415,5649851354265,Jose Manuel,5200,35,alta,con sueldo,normal
-5626,1454151,Carlos Alfredo, zona 10, 58946532,5645512,15/08/2006,45815,9854653432546,Carlos Alfredo,6900,29,baja,sin sueldo,normal
+id,codigoPlanilla,nombre,direccion,telefono,numeroPatronal,fechaPeriodo,idEmpleado,dpiEmpleado,nombreEmpleado,sueldoEmpleado,edadEmpleado,estado,estadoSueldo,estadoContratacion
+SM-001,1234,San Martin,zona 6,54854625,6254584,21/06/2003,1,522366,Jose Manuel,5200,35,alta,con sueldo,normal
+HO-001,1234,Holandesa,zona 6,54854625,6254584,21/07/2003,1,522366,Jose Manuel,5200,35,alta,con sueldo,normal
+HO-002,1234,Patzy,zona 6,54854625,6254584,21/07/2003,1,522366,Jose Manuel,2800,35,alta,con sueldo,normal

@@ -137,7 +137,7 @@ namespace FuncionesPrincipales
             string estado;
             string estadoSueldo;
             string estadoContratacion;
-            string temporal;
+            string tempString;
 
             stringstream archivo(linea);
 
@@ -146,18 +146,18 @@ namespace FuncionesPrincipales
             getline(archivo, nombre, ',');
             getline(archivo, direccion, ',');
             getline(archivo, telefono, ',');
-            getline(archivo, temporal, ',');
-            numeroPatronal = stoi(temporal);
+            getline(archivo, tempString, ',');
+            numeroPatronal = stoi(tempString);
             getline(archivo, fechaPeriodo, ',');
-            getline(archivo, temporal, ',');
-            idEmpleado = stoi(temporal);
-            getline(archivo, temporal, ',');
-            dpiEmpleado = stoi(temporal);
+            getline(archivo, tempString, ',');
+            idEmpleado = stoi(tempString);
+            getline(archivo, tempString, ',');
+            dpiEmpleado = stoi(tempString);
             getline(archivo, nombreEmpleado, ',');
-            getline(archivo, temporal, ',');
-            sueldoEmpleado = stoi(temporal);
-            getline(archivo, temporal, ',');
-            edadEmpleado = stoi(temporal);
+            getline(archivo, tempString, ',');
+            sueldoEmpleado = stoi(tempString);
+            getline(archivo, tempString, ',');
+            edadEmpleado = stoi(tempString);
             getline(archivo, estado, ',');
             getline(archivo, estadoSueldo, ',');
             getline(archivo, estadoContratacion, ',');
@@ -350,30 +350,31 @@ namespace FuncionesPrincipales
 
     void crearHTMLSueldoMinimo()
     {
-        crearHTMLSueldoMinimo();
+        generarReporteSueldoMinimoEmpleados();
         ofstream archivo;
         archivo.open("sueldoMinimo.html");
-        archivo << "<!DOCTYPE html>"<<endl;
-        archivo << "<html>" <<endl;
-        archivo << "<head>"<<endl;
-        archivo << "<title>Reporte de sueldos minimos</title>"<<endl;
-        archivo << "</head>"<< endl;
-        archivo << "<body>"<<endl;
+        archivo << "<!DOCTYPE html>" << endl;
+        archivo << "<html>" << endl;
+        archivo << "<head>" << endl;
+        archivo << "<title>Reporte de sueldos minimos</title>" << endl;
+        archivo << "</head>" << endl;
+        archivo << "<body>" << endl;
         archivo << "<h1>Reporte de sueldo Minimo</h1>" << endl;
-        archivo << "<table border='1'>"<<endl;
-        archivo << "<tr>" <<endl;
-        archivo << "<th>nombre</th>"<<endl;
-        archivo << "<th>DPI</th>"<<endl;
-        archivo << "<th>Sueldo</th>"<<endl;
-        archivo << "<th>Nombre Empresa</th>"<<endl;
-        archivo << "</tr>"<<endl;
-        for(FuncionEmpresa::Empresa e : listaSueldoMinimoEmpleados){
-            archivo <<"<tr>"<<endl;
-            archivo << "<td> "<< e.nombreEmpleado << "</td>"<<endl;
+        archivo << "<table border='1'>" << endl;
+        archivo << "<tr>" << endl;
+        archivo << "<th>nombre</th>" << endl;
+        archivo << "<th>DPI</th>" << endl;
+        archivo << "<th>Sueldo</th>" << endl;
+        archivo << "<th>Nombre Empresa</th>" << endl;
+        archivo << "</tr>" << endl;
+        for (FuncionEmpresa::Empresa e : listaSueldoMinimoEmpleados)
+        {
+            archivo << "<tr>" << endl;
+            archivo << "<td> " << e.nombreEmpleado << "</td>" << endl;
             archivo << "<td>" << e.dpiEmpleado << "</td>" << endl;
-            archivo << "<td>" << e.sueldoEmpleado << "</td>"<< endl;
-            archivo << "<td>"<< e.nombre << "/td"<<endl;
-            archivo << "</tr>" <<endl;
+            archivo << "<td>" << e.sueldoEmpleado << "</td>" << endl;
+            archivo << "<td>" << e.nombre << "/td" << endl;
+            archivo << "</tr>" << endl;
         }
         archivo << "</table>" << endl;
         archivo << "</body>" << endl;
@@ -388,13 +389,39 @@ namespace FuncionesPrincipales
         archivo << "<!DOCTYPE html>" << endl;
         archivo << "<html>" << endl;
         archivo << "<head>" << endl;
-        archivo << "<title>Reporte de Sueldo de Empleados Mayor a 3000</title>" << endl;
+        archivo << "<title>Reporte de sueldos mayores a 3000</title>" << endl;
+
+        // add color to the body and style the table
+        archivo << "<style>" << endl;
+        archivo << "body {" << endl;
+        archivo << "background-color: #f2f2f2;" << endl;
+        archivo << "}" << endl;
+        archivo << "table {" << endl;
+        archivo << "font-family: arial, sans-serif;" << endl;
+        archivo << "border-collapse: collapse;" << endl;
+        archivo << "width: 100%;" << endl;
+        archivo << "}" << endl;
+        archivo << "td, th {" << endl;
+        archivo << "border: 1px solid #dddddd;" << endl;
+        archivo << "text-align: left;" << endl;
+        archivo << "padding: 8px;" << endl;
+        archivo << "}" << endl;
+        archivo << "tr:nth-child(even) {" << endl;
+        archivo << "background-color: #dddddd;" << endl;
+        archivo << "}" << endl;
+        archivo << "h1 {" << endl;
+        archivo << "color: #5053f6;" << endl;
+        archivo << "text-align: center;" << endl;
+        archivo << "}" << endl;
+
+        archivo << "</style>" << endl;
+
         archivo << "</head>" << endl;
         archivo << "<body>" << endl;
-        archivo << "<h1>Reporte de Sueldo de Empleados Mayor a 3000</h1>" << endl;
-        archivo << "<table border='1'>" << endl;
+        archivo << "<h1>Reporte de sueldo mayor a 3000</h1>" << endl;
+        archivo << "<table>" << endl;
         archivo << "<tr>" << endl;
-        archivo << "<th>Nombre</th>" << endl;
+        archivo << "<th>nombre</th>" << endl;
         archivo << "<th>DPI</th>" << endl;
         archivo << "<th>Sueldo</th>" << endl;
         archivo << "<th>Nombre Empresa</th>" << endl;
@@ -402,12 +429,12 @@ namespace FuncionesPrincipales
         for (FuncionEmpresa::Empresa e : listaSueldoEmpleadosM3000)
         {
             archivo << "<tr>" << endl;
-            archivo << "<td>" << e.nombreEmpleado << "</td>" << endl;
+            archivo << "<td> " << e.nombreEmpleado << "</td>" << endl;
             archivo << "<td>" << e.dpiEmpleado << "</td>" << endl;
             archivo << "<td>" << e.sueldoEmpleado << "</td>" << endl;
             archivo << "<td>" << e.nombre << "</td>" << endl;
             archivo << "</tr>" << endl;
-        };
+        }
         archivo << "</table>" << endl;
         archivo << "</body>" << endl;
         archivo << "</html>" << endl;

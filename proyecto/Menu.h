@@ -125,6 +125,7 @@ namespace Menu
 
     {
         FuncionesPrincipales::cargarEmpresasExistentes();
+        FuncionesPrincipales::registroEmpresaPlanilla();
 
         do
         {
@@ -149,10 +150,15 @@ namespace Menu
                 if (opcion == 1)
                 {
                     FuncionesPrincipales::crearHTMLSueldoMayor3000();
+                    cout << "reporte generado!";
+                    cout << '\n';
                 }
                 else if (opcion == 2)
                 {
+
                     FuncionesPrincipales::crearHTMLSueldoMinimo();
+                    cout << "reporte generado!";
+                    cout << '\n';
                 }
 
                 break;
