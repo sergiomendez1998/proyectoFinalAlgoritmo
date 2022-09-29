@@ -1,5 +1,6 @@
 #include <iostream>
 #include "FuncionesPrincipales.h"
+#include "GenerarReportes.h"
 using namespace std;
 namespace Menu
 {
@@ -145,6 +146,14 @@ namespace Menu
             case 2:
                 menuReportes();
                 cin >> opcion;
+                if (opcion == 1)
+                {
+                    GeneraReportes::crearHTMLSueldoMayor3000();
+                }
+                else if (opcion == 2)
+                {
+                    GeneraReportes::crearHTMLSueldoMinimo();
+                }
 
                 break;
             case 3:
