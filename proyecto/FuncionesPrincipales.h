@@ -373,12 +373,16 @@ namespace FuncionesPrincipales
         for (FuncionEmpresa::Empresa e : listaSueldoEmpleadosM3000)
         {
             archivo << "<tr>" << endl;
-            archivo << "<td>" << e.nombre << "</td>" << endl;
+            archivo << "<td>" << e.nombreEmpleado << "</td>" << endl;
             archivo << "<td>" << e.dpiEmpleado << "</td>" << endl;
             archivo << "<td>" << e.sueldoEmpleado << "</td>" << endl;
             archivo << "<td>" << e.nombre << "</td>" << endl;
             archivo << "</tr>" << endl;
         };
+        archivo << "</table>" << endl;
+        archivo << "</body>" << endl;
+        archivo << "</html>" << endl;
+        archivo.close();
     }
 
 }
