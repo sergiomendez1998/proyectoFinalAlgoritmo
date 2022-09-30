@@ -354,79 +354,52 @@ namespace FuncionesPrincipales
         ofstream archivo;
         archivo.open("sueldoMinimo.html");
         archivo << "<!DOCTYPE html>" << endl;
-        archivo << "<html>" << endl;
+        archivo << "<html lang ='en'>" << endl;
         archivo << "<head>" << endl;
-        archivo << "<title>Reporte de sueldos minimos</title>" << endl;
+        archivo << "<meta charset='UTF-8'>" << endl;
+        archivo << "<meta http-equiv='X-UA-Compatible' content='IE=edge'>" << endl;
+        archivo << "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" << endl;
+        archivo << "<link rel='stylesheet' href='style.css'>" << endl;
+        archivo << "<link rel='stylesheet' href='nav.css'>" << endl;
+        archivo << "<title>Reporte-sueldos</title>" << endl;
         archivo << "</head>" << endl;
         archivo << "<body>" << endl;
-        archivo << "<h1>Reporte de sueldo Minimo</h1>" << endl;
-        archivo << "<table border='1'>" << endl;
+
+        archivo << "<div class='navbar'>" << endl;
+        archivo << "<div class='container'>" << endl;
+        archivo << "<div class='nav-header'>" << endl;
+
+        archivo << "<a href='#' class='navbar-brand'>Seccion de Reportes de Sueldos</a>" << endl;
+        archivo << "</div>" << endl;
+
+        archivo << "<ul class='nav navcollaps'>" << endl;
+        archivo << "<li>" << endl;
+        archivo << "<a href='sueldoMayor3000.html'>Sueldos mayor 3000</a>" << endl;
+        archivo << "</li>" << endl;
+        archivo << "<li>" << endl;
+        archivo << "<a href='sueldoMinimo.html'>Sueldo Minimo</a>" << endl;
+        archivo << "</li>" << endl;
+        archivo << "</ul>" << endl;
+        archivo << "</div>" << endl;
+        archivo << "</div>" << endl;
+
+        archivo << "<br>" << endl;
+        archivo << "<br>" << endl;
+        archivo << "<br>" << endl;
+        archivo << "<br>" << endl;
+
+        archivo << "<div class='table-wrapper'>" << endl;
+        archivo << "<table class='fl-table'>" << endl;
+        archivo << "<thead>" << endl;
         archivo << "<tr>" << endl;
-        archivo << "<th>nombre</th>" << endl;
+        archivo << "<th>Nombre</th>" << endl;
         archivo << "<th>DPI</th>" << endl;
         archivo << "<th>Sueldo</th>" << endl;
         archivo << "<th>Nombre Empresa</th>" << endl;
         archivo << "</tr>" << endl;
+        archivo << "</thead>" << endl;
+        archivo << "<tbody>" << endl;
         for (FuncionEmpresa::Empresa e : listaSueldoMinimoEmpleados)
-        {
-            archivo << "<tr>" << endl;
-            archivo << "<td> " << e.nombreEmpleado << "</td>" << endl;
-            archivo << "<td>" << e.dpiEmpleado << "</td>" << endl;
-            archivo << "<td>" << e.sueldoEmpleado << "</td>" << endl;
-            archivo << "<td>" << e.nombre << "/td" << endl;
-            archivo << "</tr>" << endl;
-        }
-        archivo << "</table>" << endl;
-        archivo << "</body>" << endl;
-        archivo << "</html>" << endl;
-        archivo.close();
-    }
-    void crearHTMLSueldoMayor3000()
-    {
-        generarReporteSueldoEmpleadosM3000();
-        ofstream archivo;
-        archivo.open("sueldoMayor3000.html");
-        archivo << "<!DOCTYPE html>" << endl;
-        archivo << "<html>" << endl;
-        archivo << "<head>" << endl;
-        archivo << "<title>Reporte de sueldos mayores a 3000</title>" << endl;
-
-        // add color to the body and style the table
-        archivo << "<style>" << endl;
-        archivo << "body {" << endl;
-        archivo << "background-color: #f2f2f2;" << endl;
-        archivo << "}" << endl;
-        archivo << "table {" << endl;
-        archivo << "font-family: arial, sans-serif;" << endl;
-        archivo << "border-collapse: collapse;" << endl;
-        archivo << "width: 100%;" << endl;
-        archivo << "}" << endl;
-        archivo << "td, th {" << endl;
-        archivo << "border: 1px solid #dddddd;" << endl;
-        archivo << "text-align: left;" << endl;
-        archivo << "padding: 8px;" << endl;
-        archivo << "}" << endl;
-        archivo << "tr:nth-child(even) {" << endl;
-        archivo << "background-color: #dddddd;" << endl;
-        archivo << "}" << endl;
-        archivo << "h1 {" << endl;
-        archivo << "color: #5053f6;" << endl;
-        archivo << "text-align: center;" << endl;
-        archivo << "}" << endl;
-
-        archivo << "</style>" << endl;
-
-        archivo << "</head>" << endl;
-        archivo << "<body>" << endl;
-        archivo << "<h1>Reporte de sueldo mayor a 3000</h1>" << endl;
-        archivo << "<table>" << endl;
-        archivo << "<tr>" << endl;
-        archivo << "<th>nombre</th>" << endl;
-        archivo << "<th>DPI</th>" << endl;
-        archivo << "<th>Sueldo</th>" << endl;
-        archivo << "<th>Nombre Empresa</th>" << endl;
-        archivo << "</tr>" << endl;
-        for (FuncionEmpresa::Empresa e : listaSueldoEmpleadosM3000)
         {
             archivo << "<tr>" << endl;
             archivo << "<td> " << e.nombreEmpleado << "</td>" << endl;
@@ -435,9 +408,82 @@ namespace FuncionesPrincipales
             archivo << "<td>" << e.nombre << "</td>" << endl;
             archivo << "</tr>" << endl;
         }
+        archivo << "</tbody>" << endl;
         archivo << "</table>" << endl;
+        archivo << "</div>" << endl;
         archivo << "</body>" << endl;
         archivo << "</html>" << endl;
+
+        archivo.close();
+    }
+    void crearHTMLSueldoMayor3000()
+    {
+        generarReporteSueldoEmpleadosM3000();
+        ofstream archivo;
+        archivo.open("sueldoMayor3000.html");
+        // create html 5
+        archivo << "<!DOCTYPE html>" << endl;
+        archivo << "<html lang ='en'>" << endl;
+        archivo << "<head>" << endl;
+        archivo << "<meta charset='UTF-8'>" << endl;
+        archivo << "<meta http-equiv='X-UA-Compatible' content='IE=edge'>" << endl;
+        archivo << "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" << endl;
+        archivo << "<link rel='stylesheet' href='style.css'>" << endl;
+        archivo << "<link rel='stylesheet' href='nav.css'>" << endl;
+        archivo << "<title>Reporte-sueldos</title>" << endl;
+        archivo << "</head>" << endl;
+        archivo << "<body>" << endl;
+
+        archivo << "<div class='navbar'>" << endl;
+        archivo << "<div class='container'>" << endl;
+        archivo << "<div class='nav-header'>" << endl;
+
+        archivo << "<a href='#' class='navbar-brand'>Seccion de Reportes de Sueldos</a>" << endl;
+        archivo << "</div>" << endl;
+
+        archivo << "<ul class='nav navcollaps'>" << endl;
+        archivo << "<li>" << endl;
+        archivo << "<a href='sueldoMayor3000.html'>Sueldos mayor 3000</a>" << endl;
+        archivo << "</li>" << endl;
+        archivo << "<li>" << endl;
+        archivo << "<a href='sueldoMinimo.html'>Sueldo Minimo</a>" << endl;
+        archivo << "</li>" << endl;
+        archivo << "</ul>" << endl;
+        archivo << "</div>" << endl;
+        archivo << "</div>" << endl;
+
+        archivo << "<br>" << endl;
+        archivo << "<br>" << endl;
+        archivo << "<br>" << endl;
+        archivo << "<br>" << endl;
+
+        archivo << "<div class='table-wrapper'>" << endl;
+        archivo << "<table class='fl-table'>" << endl;
+        archivo << "<thead>" << endl;
+        archivo << "<tr>" << endl;
+        archivo << "<th>Nombre</th>" << endl;
+        archivo << "<th>DPI</th>" << endl;
+        archivo << "<th>Sueldo</th>" << endl;
+        archivo << "<th>Nombre Empresa</th>" << endl;
+        archivo << "</tr>" << endl;
+        archivo << "</thead>" << endl;
+        archivo << "<tbody>" << endl;
+        for (FuncionEmpresa::Empresa e : listaSueldoEmpleadosM3000)
+        {
+            archivo << "<tr>" << endl;
+            archivo << "<td>" << e.nombreEmpleado << "</td>" << endl;
+            archivo << "<td>" << e.dpiEmpleado << "</td>" << endl;
+            archivo << "<td>" << e.sueldoEmpleado << "</td>" << endl;
+            archivo << "<td>" << e.nombre << "</td>" << endl;
+            archivo << "</tr>" << endl;
+        }
+        archivo << "</tbody>" << endl;
+        archivo << "</table>" << endl;
+        archivo << "</div>" << endl;
+
+        archivo << "</body>" << endl;
+        archivo << "</html>" << endl;
+
         archivo.close();
     }
 
