@@ -22,7 +22,7 @@ namespace FuncionesPrincipales
     {
 
         ifstream archivo;
-        archivo.open("empleadosRegistrados.csv");
+        archivo.open("./csvFile/empleadosRegistrados.csv");
         string linea = "";
         getline(archivo, linea);
         linea = "";
@@ -55,7 +55,7 @@ namespace FuncionesPrincipales
     void registrarEmpleadosNuevos()
     {
         ofstream archivoEmpleados;
-        archivoEmpleados.open("registroEmpresaPlanilla.csv");
+        archivoEmpleados.open("./csvFile/registroEmpresaPlanilla.csv");
         for (FuncionEmpresa::Empresa empresa : FuncionEmpresa::listEmpresasRegistradas)
         {
             archivoEmpleados << empresa.id << "," << empresa.codigoPlanilla << "," << empresa.nombre << "," << empresa.direccion << "," << empresa.telefono << "," << empresa.numeroPatronal << "," << empresa.fechaPeriodo << "," << empresa.idEmpleado << "," << empresa.dpiEmpleado << "," << empresa.nombreEmpleado << "," << empresa.sueldoEmpleado << "," << empresa.edadEmpleado << "," << empresa.estado << "," << empresa.estadoSueldo << "," << empresa.estadoContracion << endl;
@@ -65,7 +65,7 @@ namespace FuncionesPrincipales
     void cargarNuevaPlanillaEmpresa(string nombreArchivo)
     {
         ifstream archivo;
-        archivo.open(nombreArchivo);
+        archivo.open("./csvFile/" + nombreArchivo);
         string linea = "";
         getline(archivo, linea);
         linea = "";
@@ -215,7 +215,7 @@ namespace FuncionesPrincipales
     {
         ofstream archivoEmpresas;
         revisarEstadodeAlta(listaEmpresaTemporal);
-        archivoEmpresas.open("registroEmpresaPlanilla.csv");
+        archivoEmpresas.open("./csvFile/registroEmpresaPlanilla.csv");
 
         for (int i = 0; i < listaEmpresaTemporal.size(); i++)
         {
@@ -230,7 +230,7 @@ namespace FuncionesPrincipales
         if (opcion == 1)
         {
             ofstream archivoEmpresas;
-            archivoEmpresas.open("empresasRegistradas.csv");
+            archivoEmpresas.open("./csvFile/empresasRegistradas.csv");
             for (int i = 0; i < listadoEmpresas.size(); i++)
             {
                 archivoEmpresas << listadoEmpresas[0].id << "," << listadoEmpresas[0].nombre << "," << listadoEmpresas[0].direccion << "," << listadoEmpresas[0].telefono << "," << listadoEmpresas[0].numeroPatronal << endl;
@@ -248,7 +248,7 @@ namespace FuncionesPrincipales
     void obtenerEmpresasExistesDesdeCSVFile()
     {
         ifstream archivo;
-        archivo.open("empresasRegistradas.csv");
+        archivo.open("./csvFile/empresasRegistradas.csv");
         string linea = "";
         getline(archivo, linea);
         linea = "";
@@ -277,7 +277,7 @@ namespace FuncionesPrincipales
     void registroEmpresaPlanilla()
     {
         ifstream archivo;
-        archivo.open("registrosEmpresaPlanilla.csv");
+        archivo.open("./csvFile/registrosEmpresaPlanilla.csv");
         string linea = "";
         getline(archivo, linea);
         linea = "";
@@ -514,15 +514,15 @@ namespace FuncionesPrincipales
     {
         generarReporteSueldoMinimoEmpleados();
         ofstream archivo;
-        archivo.open("sueldoMinimo.html");
+        archivo.open("./reportes/sueldoMinimo.html");
         archivo << "<!DOCTYPE html>" << endl;
         archivo << "<html lang ='en'>" << endl;
         archivo << "<head>" << endl;
         archivo << "<meta charset='UTF-8'>" << endl;
         archivo << "<meta http-equiv='X-UA-Compatible' content='IE=edge'>" << endl;
         archivo << "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" << endl;
-        archivo << "<link rel='stylesheet' href='style.css'>" << endl;
-        archivo << "<link rel='stylesheet' href='nav.css'>" << endl;
+        archivo << "<link rel='stylesheet' href='./css/style.css'>" << endl;
+        archivo << "<link rel='stylesheet' href='./css/nav.css'>" << endl;
         archivo << "<title>Reporte-sueldos</title>" << endl;
         archivo << "</head>" << endl;
         archivo << "<body>" << endl;
@@ -582,7 +582,7 @@ namespace FuncionesPrincipales
     {
         generarReporteSueldoEmpleadosM3000();
         ofstream archivo;
-        archivo.open("sueldoMayor3000.html");
+        archivo.open("./reportes/sueldoMayor3000.html");
         // create html 5
         archivo << "<!DOCTYPE html>" << endl;
         archivo << "<html lang ='en'>" << endl;
@@ -590,8 +590,8 @@ namespace FuncionesPrincipales
         archivo << "<meta charset='UTF-8'>" << endl;
         archivo << "<meta http-equiv='X-UA-Compatible' content='IE=edge'>" << endl;
         archivo << "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" << endl;
-        archivo << "<link rel='stylesheet' href='style.css'>" << endl;
-        archivo << "<link rel='stylesheet' href='nav.css'>" << endl;
+        archivo << "<link rel='stylesheet' href='./css/style.css'>" << endl;
+        archivo << "<link rel='stylesheet' href='./css/nav.css'>" << endl;
         archivo << "<title>Reporte-sueldos</title>" << endl;
         archivo << "</head>" << endl;
         archivo << "<body>" << endl;
