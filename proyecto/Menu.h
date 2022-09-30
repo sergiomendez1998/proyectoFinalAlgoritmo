@@ -189,6 +189,7 @@ namespace Menu
         FuncionesPrincipales::cargarNuevaPlanillaEmpresa(nombreArchivo);
         FuncionesPrincipales::cargarEmpresasExistentes();
         FuncionesPrincipales::registroEmpresaPlanilla();
+        FuncionesPrincipales::obtenerEmpleadosExistesDesdeCSVFile();
 
         do
         {
