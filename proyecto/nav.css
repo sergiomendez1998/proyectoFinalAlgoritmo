@@ -80,7 +80,6 @@ a:hover{
   padding: 0 5px;
   width: 150px;
   transition:height .5s;
-  -webkit-box-sizing:border-box;
   padding-left: 0px;
   border-radius: 0 0 10px;
   position: absolute;
