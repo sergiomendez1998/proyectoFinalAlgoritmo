@@ -18,6 +18,50 @@ namespace FuncionesPrincipales
 
     vector<FuncionEmpresa::Empresa> listaSueldoEmpleadosM3000;
     vector<FuncionEmpresa::Empresa> listaSueldoMinimoEmpleados;
+    void obtenerEmpleadosExistesDesdeCSVFile()
+    {
+
+        ifstream archivo;
+        archivo.open("empleadosRegistrados.csv");
+        string linea = "";
+        getline(archivo, linea);
+        linea = "";
+        while (getline(archivo, linea))
+        {
+            int idEmpleado;
+            int dpiEmpleado;
+            string nombre;
+            string direccion;
+            string telefono;
+            int edad;
+            string tempString;
+
+            stringstream archivo(linea);
+            getline(archivo, tempString, ',');
+            idEmpleado = stoi(tempString);
+            getline(archivo, tempString, ',');
+            dpiEmpleado = stoi(tempString);
+            getline(archivo, nombre, ',');
+            getline(archivo, direccion, ',');
+            getline(archivo, telefono, ',');
+            getline(archivo, tempString, ',');
+            edad = stoi(tempString);
+            FuncionEmpresa::Empresa empresa(idEmpleado, dpiEmpleado, nombre, direccion, telefono, edad);
+            FuncionEmpresa::listEmpleadosRegistradas.push_back(empresa);
+        }
+        archivo.close();
+    };
+
+    void registrarEmpleadosNuevos()
+    {
+        ofstream archivoEmpleados;
+        archivoEmpleados.open("registroEmpresaPlanilla.csv");
+        for (FuncionEmpresa::Empresa empresa : FuncionEmpresa::listEmpresasRegistradas)
+        {
+            archivoEmpleados << empresa.id << "," << empresa.codigoPlanilla << "," << empresa.nombre << "," << empresa.direccion << "," << empresa.telefono << "," << empresa.numeroPatronal << "," << empresa.fechaPeriodo << "," << empresa.idEmpleado << "," << empresa.dpiEmpleado << "," << empresa.nombreEmpleado << "," << empresa.sueldoEmpleado << "," << empresa.edadEmpleado << "," << empresa.estado << "," << empresa.estadoSueldo << "," << empresa.estadoContracion << endl;
+        }
+        archivoEmpleados.close();
+    };
     void cargarNuevaPlanillaEmpresa(string nombreArchivo)
     {
         ifstream archivo;
@@ -122,7 +166,7 @@ namespace FuncionesPrincipales
 
                         if (!existeEmpleado)
                         {
-                            FuncionEmpresa::listEmpleadosRegistradas.push_back(empleado);
+                            FuncionEmpresa::listEmpleadosTemporal.push_back(empleado);
                             cout << "Empleado que no se encontraba inscrito y tiene estado de alta" << endl;
                             cout << "Fue inscrito exitosamente!" << endl;
                             cout << "\n";
@@ -170,13 +214,14 @@ namespace FuncionesPrincipales
     string registrarDatosEmpresaPlanillaCSV(vector<FuncionEmpresa::Empresa> listaEmpresaTemporal)
     {
         ofstream archivoEmpresas;
+        revisarEstadodeAlta(listaEmpresaTemporal);
         archivoEmpresas.open("registroEmpresaPlanilla.csv");
 
         for (int i = 0; i < listaEmpresaTemporal.size(); i++)
         {
             archivoEmpresas << listaEmpresaTemporal[i].id << "," << listaEmpresaTemporal[i].nombre << "," << listaEmpresaTemporal[i].direccion << "," << listaEmpresaTemporal[i].telefono << "," << listaEmpresaTemporal[i].numeroPatronal << "," << listaEmpresaTemporal[i].fechaPeriodo << "," << listaEmpresaTemporal[i].codigoPlanilla << "," << listaEmpresaTemporal[i].estado << "," << listaEmpresaTemporal[i].estadoSueldo << "," << listaEmpresaTemporal[i].estadoContracion << endl;
         }
-        revisarEstadodeAlta(listaEmpresaTemporal);
+        registrarEmpleadosNuevos();
         archivoEmpresas.close();
         return "Datos Registrados!";
     }
@@ -306,13 +351,14 @@ namespace FuncionesPrincipales
             {
                 if (e.id == numeroEmpresa)
                 {
-                    cout << "Empresa " << e.nombre << endl;
+                    cout << "Nombre Empresa : " << e.nombre << endl;
                 }
                 else
                 {
-                    cout << "Nombre Empresa no encontrado" << endl;
+                    cout << "Empresa no encontrado" << endl;
                 }
             }
+            cout << "\n";
         }
         catch (exception e)
         {

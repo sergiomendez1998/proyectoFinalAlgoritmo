@@ -42,12 +42,8 @@ namespace Menu
             FuncionesPrincipales::buscarEmpleadoPorDPI(e.dpiEmpleado);
             if (!FuncionesPrincipales::existeEmpleado && e.estado != "Alta")
             {
-                FuncionEmpresa::Empresa empresaTemporal(e.id, e.codigoPlanilla, e.nombre, e.direccion, e.telefono, e.numeroPatronal, e.fechaPeriodo, e.idEmpleado, e.dpiEmpleado, e.nombreEmpleado, e.sueldoEmpleado, e.edadEmpleado, e.estado, e.estadoSueldo, e.estadoContracion);
-                FuncionEmpresa::listEmpresasRegistradas.push_back(empresaTemporal);
-            }
-            {
                 FuncionEmpresa::Empresa empleado(e.idEmpleado, e.dpiEmpleado, e.nombreEmpleado, e.direccion, e.telefono, e.edadEmpleado);
-                FuncionEmpresa::listEmpleadosRegistradas.push_back(empleado);
+                FuncionEmpresa::listEmpleadosTemporal.push_back(empleado);
                 FuncionesPrincipales::existeEmpleado = false;
             }
         }

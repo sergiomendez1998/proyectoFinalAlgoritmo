@@ -61,5 +61,6 @@ namespace FuncionEmpresa
   vector<Empresa> listEmpresasPlanillaRegistradas;
   vector<Empresa> listEmpresasPlanillaTemporal;
   vector<Empresa> listEmpleadosRegistradas;
+  vector<Empresa> listEmpleadosTemporal;
 
 }
