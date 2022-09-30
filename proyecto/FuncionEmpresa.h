@@ -46,10 +46,20 @@ namespace FuncionEmpresa
       this->telefono = telefono;
       this->numeroPatronal = numeroPatronal;
     }
+    Empresa(int idEmpleado, int dpiEmpleado, string nombre, string dirreccion, string telefono, int edad)
+    {
+      this->idEmpleado = idEmpleado;
+      this->dpiEmpleado = dpiEmpleado;
+      this->nombre = nombre;
+      this->direccion = direccion;
+      this->telefono = telefono;
+      this->edadEmpleado = edad;
+    }
   };
 
   vector<Empresa> listEmpresasRegistradas;
   vector<Empresa> listEmpresasPlanillaRegistradas;
   vector<Empresa> listEmpresasPlanillaTemporal;
+  vector<Empresa> listEmpleadosRegistradas;
 
 }

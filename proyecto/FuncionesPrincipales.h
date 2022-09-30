@@ -13,9 +13,125 @@ namespace FuncionesPrincipales
     bool seRepiteEmpleado = false;
     bool sinSueldo = false;
     bool existeEmpleado = false;
+    int contadorEstadoAlta = 0;
+    int contadorEstadoNormal = 0;
 
     vector<FuncionEmpresa::Empresa> listaSueldoEmpleadosM3000;
     vector<FuncionEmpresa::Empresa> listaSueldoMinimoEmpleados;
+    void cargarNuevaPlanillaEmpresa(string nombreArchivo)
+    {
+        ifstream archivo;
+        archivo.open(nombreArchivo);
+        string linea = "";
+        getline(archivo, linea);
+        linea = "";
+        while (getline(archivo, linea))
+        {
+            string id;
+            string codigoPlanilla;
+            string nombre;
+            string direccion;
+            string telefono;
+            int numeroPatronal;
+            string fechaPeriodo;
+            int idEmpleado;
+            int dpiEmpleado;
+            string nombreEmpleado;
+            int sueldoEmpleado;
+            int edadEmpleado;
+            string estado;
+            string estadoSueldo;
+            string estadoContratacion;
+            string tempString;
+
+            stringstream archivo(linea);
+
+            getline(archivo, id, ',');
+            getline(archivo, codigoPlanilla, ',');
+            getline(archivo, nombre, ',');
+            getline(archivo, direccion, ',');
+            getline(archivo, telefono, ',');
+            getline(archivo, tempString, ',');
+            numeroPatronal = stoi(tempString);
+            getline(archivo, fechaPeriodo, ',');
+            getline(archivo, tempString, ',');
+            idEmpleado = stoi(tempString);
+            getline(archivo, tempString, ',');
+            dpiEmpleado = stoi(tempString);
+            getline(archivo, nombreEmpleado, ',');
+            getline(archivo, tempString, ',');
+            sueldoEmpleado = stoi(tempString);
+            getline(archivo, tempString, ',');
+            edadEmpleado = stoi(tempString);
+            getline(archivo, estado, ',');
+            getline(archivo, estadoSueldo, ',');
+            getline(archivo, estadoContratacion, ',');
+
+            FuncionEmpresa::Empresa empresa(id, codigoPlanilla, nombre, direccion, telefono, numeroPatronal, fechaPeriodo, idEmpleado, dpiEmpleado, nombreEmpleado, sueldoEmpleado, edadEmpleado, estado, estadoSueldo, estadoContratacion);
+            FuncionEmpresa::listEmpresasPlanillaTemporal.push_back(empresa);
+        }
+        archivo.close();
+    };
+    void buscarEmpleadoPorDPI(int dpiEmpleado)
+    {
+        for (FuncionEmpresa::Empresa e : FuncionEmpresa::listEmpleadosRegistradas)
+        {
+            if (e.dpiEmpleado == dpiEmpleado)
+            {
+                existeEmpleado = true;
+                break;
+            }
+        }
+    }
+    void revisarEstadoNormal(vector<FuncionEmpresa::Empresa> listaTemporal)
+    {
+
+        for (FuncionEmpresa::Empresa e : listaTemporal)
+        {
+            if (e.estado == "Normal")
+            {
+                contadorEstadoNormal++;
+                for (FuncionEmpresa::Empresa e2 : listaTemporal)
+                {
+                    if (e2.idEmpleado == e.idEmpleado && e2.estado == "Alta")
+                    {
+                        contadorEstadoAlta++;
+                        break;
+                    }
+                }
+            }
+        };
+    }
+    void revisarEstadodeAlta(vector<FuncionEmpresa::Empresa> listaTemporal)
+    {
+        for (FuncionEmpresa::Empresa e : listaTemporal)
+        {
+            if (e.estado == "Alta")
+            {
+                for (FuncionEmpresa::Empresa e2 : FuncionEmpresa::listEmpresasPlanillaRegistradas)
+                {
+                    if (e2.idEmpleado == e.idEmpleado)
+                    {
+                        existeEmpleado = true;
+                        break;
+                    }
+                    else
+                    {
+                        FuncionEmpresa::Empresa empleado(e.idEmpleado, e.dpiEmpleado, e.nombreEmpleado, e.direccion, e.telefono, e.edadEmpleado);
+                        buscarEmpleadoPorDPI(empleado.dpiEmpleado);
+
+                        if (!existeEmpleado)
+                        {
+                            FuncionEmpresa::listEmpleadosRegistradas.push_back(empleado);
+                            cout << "Empleado que no se encontraba inscrito y tiene estado de alta" << endl;
+                            cout << "Fue inscrito exitosamente!" << endl;
+                            cout << "\n";
+                        }
+                    }
+                }
+            }
+        }
+    };
 
     void revisarEmpleadoSuspendido(vector<FuncionEmpresa::Empresa> listaTemporal)
     {
@@ -60,6 +176,7 @@ namespace FuncionesPrincipales
         {
             archivoEmpresas << listaEmpresaTemporal[i].id << "," << listaEmpresaTemporal[i].nombre << "," << listaEmpresaTemporal[i].direccion << "," << listaEmpresaTemporal[i].telefono << "," << listaEmpresaTemporal[i].numeroPatronal << "," << listaEmpresaTemporal[i].fechaPeriodo << "," << listaEmpresaTemporal[i].codigoPlanilla << "," << listaEmpresaTemporal[i].estado << "," << listaEmpresaTemporal[i].estadoSueldo << "," << listaEmpresaTemporal[i].estadoContracion << endl;
         }
+        revisarEstadodeAlta(listaEmpresaTemporal);
         archivoEmpresas.close();
         return "Datos Registrados!";
     }
@@ -112,7 +229,6 @@ namespace FuncionesPrincipales
         archivo.close();
     };
 
-    // crear metodo para cargar empresas desde el archivo al arreglo de listaEmpresas
     void registroEmpresaPlanilla()
     {
         ifstream archivo;
@@ -486,5 +602,4 @@ namespace FuncionesPrincipales
 
         archivo.close();
     }
-
 }
