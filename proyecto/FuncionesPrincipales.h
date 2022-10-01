@@ -18,6 +18,40 @@ namespace FuncionesPrincipales
 
     vector<FuncionEmpresa::Empresa> listaSueldoEmpleadosM3000;
     vector<FuncionEmpresa::Empresa> listaSueldoMinimoEmpleados;
+    void buscarEmpleadoPorDPI(int dpiEmpleado)
+    {
+        for (FuncionEmpresa::Empresa e : FuncionEmpresa::listEmpleadosRegistradas)
+        {
+            if (e.dpiEmpleado == dpiEmpleado)
+            {
+                existeEmpleado = true;
+
+                break;
+            }
+        }
+    }
+    void buscarEmpresaPorId(string idEmpresa)
+    {
+        try
+        {
+            for (FuncionEmpresa::Empresa e : FuncionEmpresa::listEmpresasRegistradas)
+            {
+                if (e.id == idEmpresa)
+                {
+                    existeEmpresa = true;
+                    break;
+                }
+                else
+                {
+                    existeEmpresa = false;
+                }
+            }
+        }
+        catch (exception e)
+        {
+            cout << "Lista vacia" << endl;
+        }
+    }
     void obtenerEmpleadosExistesDesdeCSVFile()
     {
 
@@ -31,8 +65,6 @@ namespace FuncionesPrincipales
             int idEmpleado;
             int dpiEmpleado;
             string nombre;
-            string direccion;
-            string telefono;
             int edad;
             string tempString;
 
@@ -42,26 +74,29 @@ namespace FuncionesPrincipales
             getline(archivo, tempString, ',');
             dpiEmpleado = stoi(tempString);
             getline(archivo, nombre, ',');
-            getline(archivo, direccion, ',');
-            getline(archivo, telefono, ',');
             getline(archivo, tempString, ',');
             edad = stoi(tempString);
-            FuncionEmpresa::Empresa empresa(idEmpleado, dpiEmpleado, nombre, direccion, telefono, edad);
+            FuncionEmpresa::Empresa empresa(idEmpleado, dpiEmpleado, nombre, edad);
             FuncionEmpresa::listEmpleadosRegistradas.push_back(empresa);
         }
         archivo.close();
-    };
-
+    }
     void registrarEmpleadosNuevos()
     {
         ofstream archivoEmpleados;
-        archivoEmpleados.open("./csvFile/registroEmpresaPlanilla.csv");
-        for (FuncionEmpresa::Empresa empresa : FuncionEmpresa::listEmpresasRegistradas)
+        archivoEmpleados.open("./csvFile/empleadosRegistrados.csv", ios::app);
+        cout << "lista empleados temporal" << FuncionEmpresa::listEmpleadosTemporal.size() << endl;
+        for (FuncionEmpresa::Empresa empresa : FuncionEmpresa::listEmpleadosTemporal)
         {
-            archivoEmpleados << empresa.id << "," << empresa.codigoPlanilla << "," << empresa.nombre << "," << empresa.direccion << "," << empresa.telefono << "," << empresa.numeroPatronal << "," << empresa.fechaPeriodo << "," << empresa.idEmpleado << "," << empresa.dpiEmpleado << "," << empresa.nombreEmpleado << "," << empresa.sueldoEmpleado << "," << empresa.edadEmpleado << "," << empresa.estado << "," << empresa.estadoSueldo << "," << empresa.estadoContracion << endl;
+
+            archivoEmpleados << empresa.idEmpleado
+                             << "," << empresa.dpiEmpleado
+                             << "," << empresa.nombreEmpleado
+                             << "," << empresa.edadEmpleado << endl;
         }
+        // idEmpleado, dpiEmpleado,nombre,dirreccion,telefono,edad
         archivoEmpleados.close();
-    };
+    }
     void cargarNuevaPlanillaEmpresa(string nombreArchivo)
     {
         ifstream archivo;
@@ -115,18 +150,8 @@ namespace FuncionesPrincipales
             FuncionEmpresa::listEmpresasPlanillaTemporal.push_back(empresa);
         }
         archivo.close();
-    };
-    void buscarEmpleadoPorDPI(int dpiEmpleado)
-    {
-        for (FuncionEmpresa::Empresa e : FuncionEmpresa::listEmpleadosRegistradas)
-        {
-            if (e.dpiEmpleado == dpiEmpleado)
-            {
-                existeEmpleado = true;
-                break;
-            }
-        }
     }
+
     void revisarEstadoNormal(vector<FuncionEmpresa::Empresa> listaTemporal)
     {
 
@@ -150,21 +175,21 @@ namespace FuncionesPrincipales
     {
         for (FuncionEmpresa::Empresa e : listaTemporal)
         {
+
             if (e.estado == "Alta")
             {
+
                 for (FuncionEmpresa::Empresa e2 : FuncionEmpresa::listEmpresasPlanillaRegistradas)
                 {
-                    if (e2.idEmpleado == e.idEmpleado)
+
+                    if (e.dpiEmpleado != e2.dpiEmpleado)
                     {
-                        existeEmpleado = true;
-                        break;
-                    }
-                    else
-                    {
-                        FuncionEmpresa::Empresa empleado(e.idEmpleado, e.dpiEmpleado, e.nombreEmpleado, e.direccion, e.telefono, e.edadEmpleado);
+
+                        FuncionEmpresa::Empresa empleado(e.idEmpleado, e.dpiEmpleado, e.nombreEmpleado, e.edadEmpleado);
+
                         buscarEmpleadoPorDPI(empleado.dpiEmpleado);
 
-                        if (!existeEmpleado)
+                        if (existeEmpleado == false)
                         {
                             FuncionEmpresa::listEmpleadosTemporal.push_back(empleado);
                             cout << "Empleado que no se encontraba inscrito y tiene estado de alta" << endl;
@@ -175,7 +200,8 @@ namespace FuncionesPrincipales
                 }
             }
         }
-    };
+        cout << "\n";
+    }
 
     void revisarEmpleadoSuspendido(vector<FuncionEmpresa::Empresa> listaTemporal)
     {
@@ -202,9 +228,13 @@ namespace FuncionesPrincipales
         {
             for (FuncionEmpresa::Empresa e1 : listaTemporal)
             {
-                if (e.dpiEmpleado == e1.dpiEmpleado)
+                if (e.dpiEmpleado == e1.dpiEmpleado && e.sueldoEmpleado != e1.sueldoEmpleado && e.estado != e1.estado)
                 {
                     seRepiteEmpleado = true;
+                    break;
+                }
+                {
+                    seRepiteEmpleado = false;
                     break;
                 }
             }
@@ -214,37 +244,63 @@ namespace FuncionesPrincipales
     string registrarDatosEmpresaPlanillaCSV(vector<FuncionEmpresa::Empresa> listaEmpresaTemporal)
     {
         ofstream archivoEmpresas;
-        revisarEstadodeAlta(listaEmpresaTemporal);
-        archivoEmpresas.open("./csvFile/registroEmpresaPlanilla.csv");
+
+        archivoEmpresas.open("./csvFile/registrosEmpresaPlanilla.csv", ios::app);
 
         for (int i = 0; i < listaEmpresaTemporal.size(); i++)
         {
-            archivoEmpresas << listaEmpresaTemporal[i].id << "," << listaEmpresaTemporal[i].nombre << "," << listaEmpresaTemporal[i].direccion << "," << listaEmpresaTemporal[i].telefono << "," << listaEmpresaTemporal[i].numeroPatronal << "," << listaEmpresaTemporal[i].fechaPeriodo << "," << listaEmpresaTemporal[i].codigoPlanilla << "," << listaEmpresaTemporal[i].estado << "," << listaEmpresaTemporal[i].estadoSueldo << "," << listaEmpresaTemporal[i].estadoContracion << endl;
+            cout << listaEmpresaTemporal[i].codigoPlanilla << endl;
+            archivoEmpresas
+                << listaEmpresaTemporal[i].id
+                << "," << listaEmpresaTemporal[i].codigoPlanilla
+                << "," << listaEmpresaTemporal[i].nombre
+                << "," << listaEmpresaTemporal[i].direccion
+                << "," << listaEmpresaTemporal[i].telefono
+                << "," << listaEmpresaTemporal[i].numeroPatronal
+                << "," << listaEmpresaTemporal[i].fechaPeriodo
+                << "," << listaEmpresaTemporal[i].idEmpleado
+                << "," << listaEmpresaTemporal[i].dpiEmpleado
+                << "," << listaEmpresaTemporal[i].nombreEmpleado
+                << "," << listaEmpresaTemporal[i].sueldoEmpleado
+                << "," << listaEmpresaTemporal[i].edadEmpleado
+                << "," << listaEmpresaTemporal[i].estado
+                << "," << listaEmpresaTemporal[i].estadoSueldo
+                << "," << listaEmpresaTemporal[i].estadoContratacion << endl;
         }
-        registrarEmpleadosNuevos();
+
         archivoEmpresas.close();
         return "Datos Registrados!";
     }
+
     string escribirEmpresa(int opcion, vector<FuncionEmpresa::Empresa> listadoEmpresas)
     {
         if (opcion == 1)
         {
             ofstream archivoEmpresas;
-            archivoEmpresas.open("./csvFile/empresasRegistradas.csv");
-            for (int i = 0; i < listadoEmpresas.size(); i++)
-            {
-                archivoEmpresas << listadoEmpresas[0].id << "," << listadoEmpresas[0].nombre << "," << listadoEmpresas[0].direccion << "," << listadoEmpresas[0].telefono << "," << listadoEmpresas[0].numeroPatronal << endl;
-            }
-            archivoEmpresas.close();
-            string mensaje = registrarDatosEmpresaPlanillaCSV(listadoEmpresas);
+            archivoEmpresas.open("./csvFile/empresasRegistradas.csv", ios::app);
 
-            return "Empresa Registrada, " + mensaje;
+            // doesn't delete the header of empresasRegistradas.csv
+            int size = FuncionEmpresa::listEmpresasRegistradas.size() + 2;
+            buscarEmpresaPorId(listadoEmpresas[1].id);
+            if (!existeEmpresa)
+            {
+                archivoEmpresas
+                    << listadoEmpresas[1].id
+                    << "," << listadoEmpresas[1].nombre
+                    << "," << listadoEmpresas[1].direccion
+                    << "," << listadoEmpresas[1].telefono
+                    << "," << listadoEmpresas[1].numeroPatronal << endl;
+                archivoEmpresas.close();
+            }
+
+            return "Empresa Registrada!";
         }
         else
         {
-            return "Empresa no se inscribio";
+            return "No se pudo registrar la empresa!";
         }
-    };
+    }
+
     void obtenerEmpresasExistesDesdeCSVFile()
     {
         ifstream archivo;
@@ -272,7 +328,7 @@ namespace FuncionesPrincipales
             FuncionEmpresa::listEmpresasRegistradas.push_back(empresa);
         }
         archivo.close();
-    };
+    }
 
     void registroEmpresaPlanilla()
     {
@@ -327,7 +383,7 @@ namespace FuncionesPrincipales
             FuncionEmpresa::listEmpresasPlanillaRegistradas.push_back(empresa);
         }
         archivo.close();
-    };
+    }
 
     void buscarPorNombreEmpresa(string nombreEmpresa)
     {
@@ -364,29 +420,8 @@ namespace FuncionesPrincipales
         {
             cout << "Lista vacia" << endl;
         }
-    };
+    }
 
-    void buscarEmpresaPorId(string idEmpresa)
-    {
-        try
-        {
-            for (FuncionEmpresa::Empresa e : FuncionEmpresa::listEmpresasRegistradas)
-            {
-                if (e.id == idEmpresa)
-                {
-                    existeEmpresa = true;
-                }
-                else
-                {
-                    existeEmpresa = false;
-                }
-            }
-        }
-        catch (exception e)
-        {
-            cout << "Lista vacia" << endl;
-        }
-    };
     void showEmpresasExistentes()
     {
         for (FuncionEmpresa::Empresa e : FuncionEmpresa::listEmpresasRegistradas)
@@ -407,6 +442,7 @@ namespace FuncionesPrincipales
             if (e.fechaPeriodo == periodo && e.id == idEmpresa)
             {
                 existePeriodo = true;
+                break;
             }
             else
             {

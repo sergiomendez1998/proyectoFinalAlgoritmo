@@ -1,1 +1,7 @@
-idEmpleado, dpiEmpleado,nombre,dirreccion,telefono,edad
+idEmpleado, dpiEmpleado,nombreEmpleado,edadEmpleado
+000,00000,prueba,0
+1,52236666,Jose Manuel,35
+3,33334444,Sergio Mendez,40
+2,26692454,Julio Cesar,36
+4,85444545,Mauricio Ortiz,28
+5,265465484,Pablo Eduardo,26

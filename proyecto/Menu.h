@@ -17,15 +17,16 @@ namespace Menu
         FuncionesPrincipales::buscarEmpleadoRepetido(FuncionEmpresa::listEmpresasPlanillaTemporal);
         FuncionesPrincipales::revisarEstadoNormal(FuncionEmpresa::listEmpresasPlanillaTemporal);
         FuncionesPrincipales::revisarEmpleadoSuspendido(FuncionEmpresa::listEmpresasPlanillaTemporal);
-        if (FuncionesPrincipales::seRepiteEmpleado) // true
+        cout << "lista planilla temporal" << FuncionEmpresa::listEmpresasPlanillaTemporal.size() << endl;
+        if (FuncionesPrincipales::seRepiteEmpleado == true) // true
         {
             existeError = true;
             cout << "Hay un empleado repetido en la planilla corregir y volver a intentar" << endl;
         }
-        else if (FuncionesPrincipales::sinSueldo) // true
+        else if (FuncionesPrincipales::sinSueldo == false) // false
         {
             existeError = true;
-            cout << "Hay un con estado suspendido y tiene sueldo corregir y volver a intentar" << endl;
+            cout << "Hay un empleado con estado suspendido y tiene sueldo corregir y volver a intentar" << endl;
         }
         else if (FuncionesPrincipales::contadorEstadoNormal != FuncionesPrincipales::contadorEstadoAlta) // true
         {
@@ -42,7 +43,7 @@ namespace Menu
             FuncionesPrincipales::buscarEmpleadoPorDPI(e.dpiEmpleado);
             if (!FuncionesPrincipales::existeEmpleado && e.estado != "Alta")
             {
-                FuncionEmpresa::Empresa empleado(e.idEmpleado, e.dpiEmpleado, e.nombreEmpleado, e.direccion, e.telefono, e.edadEmpleado);
+                FuncionEmpresa::Empresa empleado(e.idEmpleado, e.dpiEmpleado, e.nombreEmpleado, e.edadEmpleado);
                 FuncionEmpresa::listEmpleadosTemporal.push_back(empleado);
                 FuncionesPrincipales::existeEmpleado = false;
             }
@@ -63,7 +64,7 @@ namespace Menu
         cout << "+-------      BIENVENIDO          -----+" << endl;
         cout << "| 1. Cargar Por Periodo                |" << endl;
         cout << "| 2. Cargar Por Numero Patronal        |" << endl;
-        cout << "| 2. Cargar Por Planilla               |" << endl;
+        cout << "| 3. Cargar Por Planilla               |" << endl;
         cout << "+--------------------------------------+" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
@@ -73,7 +74,7 @@ namespace Menu
             cout << "Ingrese id de la empresa: ";
             cin >> idEmpresaTemporal;
             FuncionesPrincipales::buscarEmpresaPorId(idEmpresaTemporal);
-            if (FuncionesPrincipales::existeEmpresa)
+            if (FuncionesPrincipales::existeEmpresa == true)
             {
                 cout << "Ingresa el periodo DD/MM/YYYY-DD/MM/YYYY: ";
                 cin >> periodoTemporal;
@@ -90,9 +91,11 @@ namespace Menu
                     validarPlanilla();
                     if (!existeError)
                     {
+                        FuncionesPrincipales::revisarEstadodeAlta(FuncionEmpresa::listEmpresasPlanillaTemporal);
                         guardarDatosEmpleadosSinEstadoDeAlta();
-                        string mensaje = FuncionesPrincipales::registrarDatosEmpresaPlanillaCSV(FuncionEmpresa::listEmpresasPlanillaTemporal);
 
+                        string mensaje = FuncionesPrincipales::registrarDatosEmpresaPlanillaCSV(FuncionEmpresa::listEmpresasPlanillaTemporal);
+                        FuncionesPrincipales::registrarEmpleadosNuevos();
                         cout << mensaje << endl;
                         limpiarDatosTemporales();
                     }
@@ -104,12 +107,12 @@ namespace Menu
                 if (!existeError)
                 {
                     cout << "Aun no existe la empresa en el registro" << endl;
-                    cout << "Registre la empresa 1. SI 2. NO :";
+                    cout << "Registre la empresa 1. SI 2. NO : ";
                     cin >> opcion;
-                    guardarDatosEmpleadosSinEstadoDeAlta();
-                    string repuesta = FuncionesPrincipales::escribirEmpresa(opcion, FuncionEmpresa::listEmpresasPlanillaTemporal);
-                    cout << repuesta << endl;
-                    limpiarDatosTemporales();
+
+                    string mensaje = FuncionesPrincipales::escribirEmpresa(opcion, FuncionEmpresa::listEmpresasPlanillaTemporal);
+                    cout << mensaje << endl;
+                    FuncionesPrincipales::cargarEmpresasExistentes();
                 }
             }
 
@@ -118,23 +121,38 @@ namespace Menu
             validarPlanilla();
             if (!existeError)
             {
-                cout << "Ingrese numero patronal de la empresa";
-                cin >> idEmpresaTemporal;
+                cout << "Ingrese numero patronal de la empresa: ";
+                cin >> numeroPatronalTemporal;
                 FuncionesPrincipales::buscarEmpresaPorNumeroPatronal(numeroPatronalTemporal);
                 if (FuncionesPrincipales::existeEmpresa)
                 {
 
-                    string mensaje = FuncionesPrincipales::registrarDatosEmpresaPlanillaCSV(FuncionEmpresa::listEmpresasPlanillaTemporal);
-                    cout << mensaje << endl;
-                    limpiarDatosTemporales();
+                    FuncionesPrincipales::revisarEstadodeAlta(FuncionEmpresa::listEmpresasPlanillaTemporal);
+                    guardarDatosEmpleadosSinEstadoDeAlta();
+                    periodoTemporal = FuncionEmpresa::listEmpresasPlanillaTemporal[0].fechaPeriodo;
+                    idEmpresaTemporal = FuncionEmpresa::listEmpresasPlanillaTemporal[0].id;
+                    FuncionesPrincipales::existePeriodoRegistrado(periodoTemporal, idEmpresaTemporal);
+                    if (FuncionesPrincipales::existePeriodo)
+                    {
+                        cout << "Ya existe un periodo registrado con ese misma empresa" << endl;
+                        limpiarDatosTemporales();
+                    }
+                    else
+                    {
+                        string mensaje = FuncionesPrincipales::registrarDatosEmpresaPlanillaCSV(FuncionEmpresa::listEmpresasPlanillaTemporal);
+                        FuncionesPrincipales::registrarEmpleadosNuevos();
+                        cout << mensaje << endl;
+                        limpiarDatosTemporales();
+                    }
                 }
                 else
                 {
                     cout << "Aun no existe la empresa en el registro" << endl;
-                    cout << "Registre la empresa 1. SI 2. NO :";
+                    cout << "Registre la empresa 1. SI 2. NO : ";
                     cin >> opcion;
-                    string repuesta = FuncionesPrincipales::escribirEmpresa(opcion, FuncionEmpresa::listEmpresasPlanillaTemporal);
-                    cout << repuesta << endl;
+                    string mensaje = FuncionesPrincipales::escribirEmpresa(opcion, FuncionEmpresa::listEmpresasPlanillaTemporal);
+                    cout << mensaje << endl;
+                    FuncionesPrincipales::cargarEmpresasExistentes();
                     limpiarDatosTemporales();
                 }
             }
@@ -145,24 +163,39 @@ namespace Menu
             validarPlanilla();
             if (!existeError)
             {
-                cout << "Ingrese codigo planilla";
+                cout << "Ingrese codigo planilla: ";
                 cin >> codigoPlanillaTemporal;
                 FuncionesPrincipales::buscarEmpresaPorCodigoPlanilla(codigoPlanillaTemporal);
                 if (FuncionesPrincipales::existeEmpresa)
                 {
 
-                    string mensaje = FuncionesPrincipales::registrarDatosEmpresaPlanillaCSV(FuncionEmpresa::listEmpresasPlanillaTemporal);
-                    cout << mensaje << endl;
-                    limpiarDatosTemporales();
+                    FuncionesPrincipales::revisarEstadodeAlta(FuncionEmpresa::listEmpresasPlanillaTemporal);
+                    guardarDatosEmpleadosSinEstadoDeAlta();
+                    periodoTemporal = FuncionEmpresa::listEmpresasPlanillaTemporal[0].fechaPeriodo;
+                    idEmpresaTemporal = FuncionEmpresa::listEmpresasPlanillaTemporal[0].id;
+                    FuncionesPrincipales::existePeriodoRegistrado(periodoTemporal, idEmpresaTemporal);
+                    if (FuncionesPrincipales::existePeriodo)
+                    {
+                        cout << "Ya existe un periodo registrado con ese misma empresa" << endl;
+                        limpiarDatosTemporales();
+                    }
+                    else
+                    {
+                        string mensaje = FuncionesPrincipales::registrarDatosEmpresaPlanillaCSV(FuncionEmpresa::listEmpresasPlanillaTemporal);
+                        FuncionesPrincipales::registrarEmpleadosNuevos();
+                        cout << mensaje << endl;
+                        limpiarDatosTemporales();
+                    }
                 }
                 else
                 {
 
                     cout << "Aun no existe la empresa en el registro" << endl;
-                    cout << "Registre la empresa 1. SI 2. NO :";
+                    cout << "Registre la empresa 1. SI 2. NO : ";
                     cin >> opcion;
-                    string repuesta = FuncionesPrincipales::escribirEmpresa(opcion, FuncionEmpresa::listEmpresasPlanillaTemporal);
-                    cout << repuesta << endl;
+                    string mensaje = FuncionesPrincipales::escribirEmpresa(opcion, FuncionEmpresa::listEmpresasPlanillaTemporal);
+                    cout << mensaje << endl;
+                    FuncionesPrincipales::cargarEmpresasExistentes();
                     limpiarDatosTemporales();
                 }
             }
@@ -185,7 +218,7 @@ namespace Menu
     void menuPrincipal()
 
     {
-        string nombreArchivo = "nombre.csv";
+        string nombreArchivo = "patsy.csv";
         FuncionesPrincipales::cargarNuevaPlanillaEmpresa(nombreArchivo);
         FuncionesPrincipales::cargarEmpresasExistentes();
         FuncionesPrincipales::registroEmpresaPlanilla();

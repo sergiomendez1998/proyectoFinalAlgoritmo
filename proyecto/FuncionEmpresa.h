@@ -18,12 +18,13 @@ namespace FuncionEmpresa
     string nombreEmpleado;
     int sueldoEmpleado;
     int edadEmpleado;
-    string estado;           // alta-suspendido-baja-normal
-    string estadoSueldo;     // con sueldo-sin sueldo
-    string estadoContracion; // suspendido por el iggs....etc
-    Empresa(string id, string codigoPlanilla, string nombre, string direccion, string telefono, int numeroPatronal, string fechaPeriodo, int idEmpleado, int dpiEmpleado, string nombreEmpleado, int sueldoEmpleado, int edadEmpleado, string estado, string estadoSueldo, string estadoContracion)
+    string estado;             // alta-suspendido-baja-normal
+    string estadoSueldo;       // con sueldo-sin sueldo
+    string estadoContratacion; // suspendido por el iggs....etc
+    Empresa(string id, string codigoPlanilla, string nombre, string direccion, string telefono, int numeroPatronal, string fechaPeriodo, int idEmpleado, int dpiEmpleado, string nombreEmpleado, int sueldoEmpleado, int edadEmpleado, string estado, string estadoSueldo, string estadoContratacion)
     {
       this->id = id;
+      this->codigoPlanilla = codigoPlanilla;
       this->nombre = nombre;
       this->direccion = direccion;
       this->telefono = telefono;
@@ -36,7 +37,7 @@ namespace FuncionEmpresa
       this->edadEmpleado = edadEmpleado;
       this->estado = estado;
       this->estadoSueldo = estadoSueldo;
-      this->estadoContracion = estadoContracion;
+      this->estadoContratacion = estadoContratacion;
     }
     Empresa(string id, string nombre, string dirreccion, string telefono, int numeroPatronal)
     {
@@ -46,13 +47,11 @@ namespace FuncionEmpresa
       this->telefono = telefono;
       this->numeroPatronal = numeroPatronal;
     }
-    Empresa(int idEmpleado, int dpiEmpleado, string nombre, string dirreccion, string telefono, int edad)
+    Empresa(int idEmpleado, int dpiEmpleado, string nombreEmpleado, int edad)
     {
       this->idEmpleado = idEmpleado;
       this->dpiEmpleado = dpiEmpleado;
-      this->nombre = nombre;
-      this->direccion = direccion;
-      this->telefono = telefono;
+      this->nombreEmpleado = nombreEmpleado;
       this->edadEmpleado = edad;
     }
   };
