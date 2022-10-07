@@ -1,2 +1,8 @@
-id,codigoPlanilla,nombre,direccion,telefono,numeroPatronal,fechaPeriodo,idEmpleado,dpiEmpleado,nombreEmpleado,sueldoEmpleado,edadEmpleado,estado,estadoSueldo,estadoContratacion
+id,codigoPlanilla,nombre Empresa,direccion,telefono,numeroPatronal,fechaPeriodo,idEmpleado,dpiEmpleado,nombreEmpleado,sueldoEmpleado,edadEmpleado,estado,estadoSueldo,estadoContratacion
 000,45454,patsy,zona 6,54854625,6254584,30/06/2003-30/07/2003,1,52236666,prueba,0000,35,prueba,prueba,prueba
+PSY-001,10123,PATSY.SA,4ta. Avenida entre 3ra. y 2da. calle zona 1,55455623,20174212,01-09-2022-30-09-2022,1,20174212,Hosny Omar Alonzo,3800,19,Baja,Con sueldo,Despido
+PSY-001,10123,PATSY.SA,19 Avenida 8 - 10 Zona 11 ,65263562,20191312,01-09-2022-30-09-2022,2,20191312,Mariano Ronald Arevalo,3200,22,Alta,Con sueldo,Contratado
+PSY-001,10123,PATSY.SA,7 Av 34 - 12 Zona 8 ,53687578,2012912,01-09-2022-30-09-2022,5,2012912,Cesar Agusto Guerra,0,26,Suspendido,Sin sueldo,Suspendido por el iggs
+PSY-001,10123,PATSY.SA,3 avenida 3-32 zona 13 de la ciudad de Guatemala,24769885,2012912,01-09-2022-30-09-2022,67,2012912,Williams Roberto Equite,0,28,Suspendido,Sin sueldo,Suspendido por el iggs
+PSY-001,10123,PATSY.SA,5ta. Av. Zona 12 Monte Maria,58886827,20144212,01-09-2022-30-09-2022,8,20144212,Carlos Fransico Barillas,3900,26,Alta,Con sueldo,Contratado
+PSY-001,10123,PATSY.SA,Diagonal 6 19-30 Zona 10,53313932,20112412,01-09-2022-30-09-2022,9,20112412,Linda Fabiola Santos,2800,32,Alta,Con sueldo,Contratado
