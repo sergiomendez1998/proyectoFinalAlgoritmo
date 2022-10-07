@@ -17,7 +17,7 @@ namespace Menu
         FuncionesPrincipales::buscarEmpleadoRepetido(FuncionEmpresa::listEmpresasPlanillaTemporal);
         FuncionesPrincipales::revisarEstadoNormal(FuncionEmpresa::listEmpresasPlanillaTemporal);
         FuncionesPrincipales::revisarEmpleadoSuspendido(FuncionEmpresa::listEmpresasPlanillaTemporal);
-        cout << "lista planilla temporal" << FuncionEmpresa::listEmpresasPlanillaTemporal.size() << endl;
+
         if (FuncionesPrincipales::seRepiteEmpleado == true) // true
         {
             existeError = true;

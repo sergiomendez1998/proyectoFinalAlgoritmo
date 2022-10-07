@@ -1,0 +1,9 @@
+ID Empresa,Nombre Empresa,Codigo Planilla ,Nombre,Direccion,Telefono,Numero Patronal,Fecha Periodo,ID empleado,DPI Empleado,Nombre completo,Sueldo Empleado,Edad Empleado,Estado,Estado de sueldo,Estado Contratacion
+HOLA-002,PASTELERIA HOLANDESA.SA,10029,Juan Diaz,23 Calle 1-05 Zona 1,23829100,20134212,01-08-2022-31-08-2022,10,20134212,Juan Mariano Diaz,Q7250,36,Activo,Sueldo,Normal
+HOLA-002,PASTELERIA HOLANDESA.SA,10406,Vinicio Ramirez,6ta. Calle 5-31 Colonia Nueva Montserrat Zona 3 De Mixco,23856790,20158812,01-08-2022-31-08-2022,12,20158821412,Vinicio Arturo Ramirez,Q3700,29,Activo,Sueldo,Normal
+HOLA-002,PASTELERIA HOLANDESA.SA,10015,Mildred Velasquez,20 Calle 7-62 Zona 7,53205404,20187112,01-08-2022-31-08-2022,19,20187112,Mildred Eugenia Velasquez,Q3250,28,Suspendido,Sin sueldo,Suspendido por el iggs
+HOLA-002,PASTELERIA HOLANDESA.SA,10295,Claudia Figueroa,11 Av. 7-38 Zona 1,43123076,20167212,01-08-2022-31-08-2022,6,20167212,Claudia Maria Figueroa,Q4700,27,Suspendido,Sin sueldo,Suspendido por el iggs
+HOLA-002,PASTELERIA HOLANDESA.SA,10036,Magin Garcia,10 Av. 3-76 Zona 4,55367556,20117812,01-08-2022-31-08-2022,7,20117812,Magin Alberto Garcia,Q5800,30,Baja,Sin sueldo,Renuncia
+HOLA-002,PASTELERIA HOLANDESA.SA,10162,Arturo Barrios,11 Calle 0-65 Zona 10,23328081,2013912,01-08-2022-31-08-2022,8,2013912,Arturo Vinicio Barrios,Q6792,34,Normal,Sueldo,Normal
+HOLA-002,PASTELERIA HOLANDESA.SA,10355,Jandry Escobar,Ruta Interamericana Km.25.5 De San Lucas A Guatemala,78303183,20181212,01-08-2022-31-08-2022,9,20181225612,Jandry Gabriela Escobar,Q4129,29,Normal,Sueldo,Normal
+HOLA-002,PASTELERIA HOLANDESA.SA,10423,Debora Molina,"7 Calle A 19-09 Zona 12, Residenciales San Carlos",24769885,20192912,01-08-2022-31-08-2022,10,20192926712,Debora Fabiola Molina,Q4500,28,Suspendido,Sin sueldo,Suspendido por el iggs
