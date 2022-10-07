@@ -1,6 +1,7 @@
-id,codigoPlanilla,nombre,direccion,telefono,numeroPatronal,fechaPeriodo,idEmpleado,dpiEmpleado,nombreEmpleado,sueldoEmpleado,edadEmpleado,estado,estadoSueldo,estadoContratacion
-P-001,45454,patsy,zona 6,54854625,6254584,1/06/2003-30/06/2003,1,52236666,Jose Manuel,5200,35,Alta,Con sueldo,Contrado
-P-001,45454,patsy,zona 6,54854625,6254584,1/06/2003-30/06/2003,2,26692454,Julio Cesar,5000,36,Baja,Con sueldo,Despedido
-P-001,45454,patsy,zona 6,54854625,6254584,1/06/2003-30/06/2003,3,33334444,Sergio Mendez,5000,40,Alta,Con sueldo,Contratado
-P-001,45454,patsy,zona 6,54854625,6254584,1/06/2003-30/06/2003,4,85444545,Mauricio Ortiz,0,28,Suspendido,Sin sueldo,Contratado
-P-001,45454,patsy,zona 6,54854625,6254584,1/06/2003-30/06/2003,5,265465484,Pablo Eduardo,0,26,Suspendido,Sin sueldo,Suspendido por el iggs
+ID Empresa,Codigo Planilla,Nombre Empresa,Direccion,Telefono,Numero Patronal,Fecha Periodo,ID empleado,DPI Empleado,Nombre completo,Sueldo Empleado,Edad Empleado,Estado,Estado de sueldo,Estado Contratacion
+PSY-001,10123,PATSY.SA,4ta. Avenida, entre 3ra. y 2da. calle,zona 1,55455623,20174212,01-09-2022-30-09-2022,1,20174212,Hosny Omar Alonzo,2600,19,Baja,Con sueldo,Despido
+PSY-001,10322,PATSY.SA,19 Avenida 8 - 10 Zona 11 ,65263562,20191312,01-09-2022-30-09-2022,2,20191312,Mariano Ronald Arevalo,3200,22,Normal,Con sueldo,n/a
+PSY-001,10440,PATSY.SA,7 Av 34 - 12 Zona 8 ,53687578,2012912,01-09-2022-30-09-2022,5,2012912,Cesar Agusto Guerra,6200,26,Suspendido,Sin sueldo,Suspendido por el iggs
+PSY-001,10438,PATSY.SA,3 avenida, 3-32, zona 13 de la ciudad de Guatemala,24769885,2012912,01-09-2022-30-09-2022,67,2012912,Williams Roberto Equite,4600,28,Normal,Con sueldo,n/a
+PSY-001,10449,PATSY.SA,5ta. Av. Zona 12 Monte Maria,58886827,20144212,01-09-2022-30-09-2022,8,20144212,Carlos Fransico Barillas,3900,26,Alta,Con sueldo,Contratado
+PSY-001,10450,PATSY.SA,Diagonal 6, 19-30 Zona 10,53313932,20112412,01-09-2022-30-09-2022,9,20112412,Linda Fabiola Santos,8100,32,Alta,Con sueldo,Contratado

@@ -160,7 +160,7 @@ namespace FuncionesPrincipales
             if (e.estado == "Normal")
             {
                 contadorEstadoNormal++;
-                for (FuncionEmpresa::Empresa e2 : listaTemporal)
+                for (FuncionEmpresa::Empresa e2 : FuncionEmpresa::listEmpresasPlanillaRegistradas)
                 {
                     if (e2.idEmpleado == e.idEmpleado && e2.estado == "Alta")
                     {
