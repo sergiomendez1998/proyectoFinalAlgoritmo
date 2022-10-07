@@ -1,4 +1,4 @@
-ID Empresa,Codigo Planilla,Nombre Empresa,Direccion,Telefono,Numero Patronal,Fecha Periodo,ID empleado,DPI Empleado,Nombre completo,Sueldo Empleado,Edad Empleado,Estado,Estado de sueldo,Estado Contratacion
+id,codigoPlanilla,nombre,direccion,telefono,numeroPatronal,fechaPeriodo,idEmpleado,dpiEmpleado,nombreEmpleado,sueldoEmpleado,edadEmpleado,estado,estadoSueldo,estadoContratacion
 PSY-001,10123,PATSY.SA,4ta. Avenida, entre 3ra. y 2da. calle,zona 1,55455623,20174212,01-09-2022-30-09-2022,1,20174212,Hosny Omar Alonzo,2600,19,Baja,Con sueldo,Despido
 PSY-001,10322,PATSY.SA,19 Avenida 8 - 10 Zona 11 ,65263562,20191312,01-09-2022-30-09-2022,2,20191312,Mariano Ronald Arevalo,3200,22,Normal,Con sueldo,n/a
 PSY-001,10440,PATSY.SA,7 Av 34 - 12 Zona 8 ,53687578,2012912,01-09-2022-30-09-2022,5,2012912,Cesar Agusto Guerra,6200,26,Suspendido,Sin sueldo,Suspendido por el iggs
