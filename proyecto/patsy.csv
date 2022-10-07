@@ -1,7 +1,7 @@
 ID Empresa,Nombre Empresa,Codigo Planilla ,Nombre,Direccion,Telefono,Numero Patronal,Fecha Periodo,ID empleado,DPI Empleado,Nombre completo,Sueldo Empleado,Edad Empleado,Estado,Estado de sueldo,Estado Contratacion
-PSY-001,PATSY.SA,10123,Hosny Alonzo,"4ta. Avenida, entre 3ra. y 2da. calle,zona 1",55455623,20174212,01-09-2022-30-09-2022,1,20174212,Hosny Omar Alonzo,Q2600,19,Activo,Sueldo,Vacaciones
-PSY-001,PATSY.SA,10322,Mariano Arevalo,19 Avenida 8 - 10 Zona 11 ,65263562,2.0191312,01-09-2022-30-09-2022,2,20191312,Mariano Ronald Arevalo,Q3200,22,Normal,Sueldo,Vacaciones
-PSY-001,PATSY.SA,10440,Cesar Guerra,7 Av 34 - 12 Zona 8 ,53687578,2012912,01-09-2022-30-09-2022,5,2012912,Cesar Agusto Guerra,Q6200,26,Baja,Sin sueldo,Despido
-PSY-001,PATSY.SA,10438,Williams Equite,"3 avenida, 3-32, zona 13 de la ciudad de Guatemala.",24769885,2012912,01-09-2022-30-09-2022,67,2012912,Williams Roberto Equite,Q4600,28,Normal,Sueldo,Normal
-PSY-001,PATSY.SA,10449,Carlos Barillas,5ta. Av. Zona 12 Monte Maria,58886827,20144212,01-09-2022-30-09-2022,8,20144212,Carlos Fransico Barillas,Q3900,26,Activo,Sueldo,Normal
-PSY-001,PATSY.SA,10450,Linda Santos,"Diagonal 6, 19-30 Zona 10",53313932,20112412,01-09-2022-30-09-2022,9,20112412,Linda Fabiola Santos,Q8100,32,Activo,Sueldo,Normal
+PSY-001,PATSY.SA,10123,Hosny Alonzo,"4ta. Avenida, entre 3ra. y 2da. calle,zona 1",55455623,20174212,01-09-2022-30-09-2022,1,20174212,Hosny Omar Alonzo,2600,19,Activo,Sueldo,Vacaciones
+PSY-001,PATSY.SA,10322,Mariano Arevalo,19 Avenida 8 - 10 Zona 11 ,65263562,2.0191312,01-09-2022-30-09-2022,2,20191312,Mariano Ronald Arevalo,3200,22,Normal,Sueldo,Vacaciones
+PSY-001,PATSY.SA,10440,Cesar Guerra,7 Av 34 - 12 Zona 8 ,53687578,2012912,01-09-2022-30-09-2022,5,2012912,Cesar Agusto Guerra,6200,26,Baja,Sin sueldo,Despido
+PSY-001,PATSY.SA,10438,Williams Equite,"3 avenida, 3-32, zona 13 de la ciudad de Guatemala.",24769885,2012912,01-09-2022-30-09-2022,67,2012912,Williams Roberto Equite,4600,28,Normal,Sueldo,Normal
+PSY-001,PATSY.SA,10449,Carlos Barillas,5ta. Av. Zona 12 Monte Maria,58886827,20144212,01-09-2022-30-09-2022,8,20144212,Carlos Fransico Barillas,3900,26,Activo,Sueldo,Normal
+PSY-001,PATSY.SA,10450,Linda Santos,"Diagonal 6, 19-30 Zona 10",53313932,20112412,01-09-2022-30-09-2022,9,20112412,Linda Fabiola Santos,8100,32,Activo,Sueldo,Normal
