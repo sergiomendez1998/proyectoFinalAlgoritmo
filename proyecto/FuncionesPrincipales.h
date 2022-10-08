@@ -100,7 +100,7 @@ namespace FuncionesPrincipales
     void cargarNuevaPlanillaEmpresa(string nombreArchivo)
     {
         ifstream archivo;
-        archivo.open("./csvFile/" + nombreArchivo);
+        archivo.open("./nuevasPlanillas/" + nombreArchivo);
         string linea = "";
         getline(archivo, linea);
         linea = "";
@@ -195,6 +195,7 @@ namespace FuncionesPrincipales
                             cout << "Empleado que no se encontraba inscrito y tiene estado de alta" << endl;
                             cout << "Fue inscrito exitosamente!" << endl;
                             cout << "\n";
+                            break;
                         }
                     }
                 }

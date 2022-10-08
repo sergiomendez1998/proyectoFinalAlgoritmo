@@ -218,7 +218,7 @@ namespace Menu
     void menuPrincipal()
 
     {
-        string nombreArchivo = "patsy.csv";
+        string nombreArchivo = "holandesa.csv";
         FuncionesPrincipales::cargarNuevaPlanillaEmpresa(nombreArchivo);
         FuncionesPrincipales::cargarEmpresasExistentes();
         FuncionesPrincipales::registroEmpresaPlanilla();

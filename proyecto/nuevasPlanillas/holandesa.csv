@@ -1,0 +1,7 @@
+id,codigoPlanilla,nombreEmpresa,direccion,telefono,numeroPatronal,fechaPeriodo,idEmpleado,dpiEmpleado,nombreEmpleado,sueldoEmpleado,edadEmpleado,estado,estadoSueldo,estadoContratacion
+HOLA-002,10124,PASTELERIA HOLANDESA.SA,23 Calle 1-05 Zona 1,23829100,20134211,01-08-2022-31-08-2022,1069,54633224,Juan Mariano Diaz,7250,36,Alta,Con sueldo,Contratado
+HOLA-002,10124,PASTELERIA HOLANDESA.SA,6ta. Calle 5-31 Colonia Nueva Montserrat Zona 3 De Mixco,23856790,20134211,01-08-2022-31-08-2022,1252,71236997,Vinicio Arturo Ramirez,3700,29,Alta,Con sueldo,Contratado
+HOLA-002,10124,PASTELERIA HOLANDESA.SA,20 Calle 7-62 Zona 7,53205404,20134211,01-08-2022-31-08-2022,1985,78781111,Mildred Eugenia Velasquez,0,28,Suspendido,Sin sueldo,Suspendido por el iggs
+HOLA-002,10124,PASTELERIA HOLANDESA.SA,11 Av. 7-38 Zona 1,43123076,20134211,01-08-2022-31-08-2022,6966,56000222,Claudia Maria Figueroa,0,27,Suspendido,Sin sueldo,Suspendido por el iggs
+HOLA-002,10124,PASTELERIA HOLANDESA.SA,11 Calle 0-65 Zona 10,23328081,20134211,01-08-2022-31-08-2022,8124,02223625,Arturo Vinicio Barrios,6792,34,Alta,Con sueldo,Contratado
+HOLA-002,10124,PASTELERIA HOLANDESA.SA,Ruta Interamericana Km.25.5 De San Lucas A Guatemala,78303183,20134211,01-08-2022-31-08-2022,9682,78952000,Jandry Gabriela Escobar,3800,29,Normal,Con Sueldo,n/a
